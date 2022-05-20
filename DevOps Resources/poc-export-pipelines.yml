@@ -1,0 +1,52 @@
+# Add steps that build, run tests, deploy, and more: https://aka.ms/yaml
+name: POC for Updating Pipelines in Repository
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight UTC build
+  branches:
+    include:
+    - master
+  always: true
+
+trigger: none
+
+pool:
+  name: 'Azure Pipelines'
+  vmImage: 'windows-latest'
+
+steps:
+- checkout: self
+  submodules: true
+  persistCredentials: true
+
+- script: echo $(System.AccessToken) | az devops login
+  env:
+    AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
+  displayName: 'Login Azure DevOps Extension'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'CTP-Non Prod Core - Dev->Perf'
+    scriptType: 'ps'
+    scriptLocation: 'scriptPath'
+    scriptPath: '$(Build.SourcesDirectory)\scripts\Export-AllDefinitions.ps1'
+    arguments: '-ControlFile "$(Build.SourcesDirectory)\scripts\Export-AllDefinitions.json"'
+    useGlobalConfig: true
+    workingDirectory: '$(Build.SourcesDirectory)\pipelines'
+
+- task: PowerShell@2
+  inputs:
+    filePath: '$(Build.SourcesDirectory)\scripts\Update-MasterBranch.ps1'
+    arguments: '-CommitMessage "Update Exported Definitions"'
+    workingDirectory: '$(Build.SourcesDirectory)\pipelines'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'CTP-Non Prod Core - Dev->Perf'
+    scriptType: 'ps'
+    scriptLocation: 'scriptPath'
+    scriptPath: '$(Build.SourcesDirectory)\scripts\Update-MasterBranch.ps1'
+    arguments: '-CommitMessage "Update Exported Definitions"'
+    addSpnToEnvironment: true
+    useGlobalConfig: true
+    workingDirectory: '$(Build.SourcesDirectory)\pipelines'

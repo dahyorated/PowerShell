@@ -1,0 +1,20 @@
+{
+  "parameters": {
+    "serviceName": "Best Practices Demo",
+    "environment": "PERF",
+    "location": "westeurope",
+    "deploymentId": "GTP012",
+    "skuCode": "P1V2",
+    "resourceGroup": "GT-WEU-GTP-CORE-PERF-RSG"
+  },
+  "results": {
+    "appInsights": "EUWFGTP012AAI01",
+    "appSvcPlanJob": 513741,
+    "appSvc": [
+      "EUWFGTP012WAP1Z"
+    ],
+    "appSvcJob": 513751,
+    "appSvcPlan": "EUWFGTP012ASP24",
+    "resourceGroup": "GT-WEU-GTP-CORE-PERF-RSG"
+  }
+}

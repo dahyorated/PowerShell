@@ -1,0 +1,9 @@
+SrcKeyName,DestKeyName,ParamMatch,ParamDelimiter,OptionalNote
+Authentication--ExternalSamlCertificate,Authentication--ExternalSamlCertificate,,,"from Stage, missed value2"
+Authentication--InternalSamlCertificate,Authentication--InternalSamlCertificate,,,"from Stage, missed value2"
+AuthSecrets-Authentication--JwtEncryptionKey,AuthSecrets-Authentication--JwtEncryptionKey,,,"from Stage, Step 1"
+AuthSecrets-ExternalClientID,AuthSecrets-ExternalClientID,,,"from Stage, Step 1"
+AuthSecrets-ExternalKey,AuthSecrets-ExternalKey,,,"from Stage, Step 1"
+connectionstring-GTADWAccess,connectionstring-GTADWAccess,,,GDAS Needs
+emailservice-SendGridApiKey,emailservice-SendGridApiKey,,,"from Stage, missed value"
+GTADWAccessdbuser,GTADWAccessdbuser,,,GDAS Needs

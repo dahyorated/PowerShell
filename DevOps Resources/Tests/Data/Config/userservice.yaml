@@ -1,0 +1,116 @@
+---
+ServiceID: ''
+ServiceAuthSecret: dce16cd64b7c44ac9aa0624535a46b51
+AzureKeyVaultConfig:
+  Prefix:
+  - AuthSecrets
+  - apim
+  - ConfigServer
+  - EurekaServer
+  KeyVaultKeys:
+  - AuthSecrets-Authentication--JwtEncryptionKey
+  - AuthSecrets-ExternalClientID
+  - AuthSecrets-ExternalKey
+  - ConfigServer-spring--cloud--config--uri
+  - EurekaServer-eureka--client--serviceUrl
+  ClientID: AppId
+  ClientKey: KeyHere
+  KeyVaultUrl: ''
+Cache:
+  ServiceLoginCache: 2
+  FindAllRolesExpirationKey: FindAllRoles
+  FindAllRolesExpirationSeconds: 60
+eygtp: ''
+AzureActiveDirectory:
+  InternalTenant: EYGS.onmicrosoft.com
+  InternalAppId: 5bd4c420-2da0-42d0-b4a3-a06882244a16
+  InternalKey: sl7E7cfymN4mIgGEWC/fSRx811weFaKsiQPq6dUklBU=
+  ExternalTenant: EYEXTSTG.onmicrosoft.com
+  ExternalAppId: ''
+  ExternalKey: ''
+  ApiUrl: https://graph.microsoft.com/
+  ResultLimit: '200'
+  BulkheadParallelizationLimit: '2'
+  ActionQueueLimit: '20'
+Authentication:
+  EnableSelfAuthentication: true
+  JwtEncryptionKey: A?D(G-KaPdSgVkYp3s6v9y$B&E)H@MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r5u8x/A?D(G+KbPeShVkYp3s6v9y$B&E)H@McQfTjWnZq4t7w!z%C*F-JaNdRgUkXp2s5u8x/A?D(G+KbPeShVmYq3t6w9y$B&E)H@McQfTjWnZr4u7x!A%C*F-JaNdRgUkXp2s5v8y/B?E(H+KbPeShVmYq3t6w9z$C&F)J@NcQfTjWnZr4u7x!A%D*G-KaPdSgUkXp2s5v8y/B?E(H+MbQeThWmYq3t6w9z$C&F)J@NcRfUjXn2r4u7x!A%D*G-KaPdSgVkYp3s6v8y/B?E(H+MbQeThWmZq4t7w!z$C&F)J@NcRfUjXn2r5u8x/A?D*G-KaPdSgVkYp3s6v9y$B&E)H+MbQeThWmZq4t7w!z%C*F-JaNcRfUjXn2r5u8x/A?D(G+KbPeSgVkYp3s6v9y$B&E)H@McQfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5u8x
+  TokenExpirationMinutes: '30'
+  TempTokenExpirationMinutes: '5'
+  SessionIdleExpirationMinutes: '30'
+  SessionAbsoluteExpirationMinutes: '600'
+  RefreshTokenExpirationMinutes: '30'
+  AllowMultipleSessions: false
+  InternalLoginUrl: 
+  ExternalLoginUrl: 
+  PostLoginUrl:
+    App1: 
+    App2: 
+    App3: 
+    App4: 
+  SamlIssuers: 
+  SamlClientID: 
+TemplateFileStorage:
+  AccountName: acemwsdgt2slll04
+  ContainerName: userservice
+  TemplateName: GTP User Upload Template V2.xlsm
+  TemplateNameV2: GTP User Upload Template V3.xlsm
+  TemplateUserDetails: GTP View User Details Report.xlsm
+DefaultConnection:
+  UserId: userservicedbsqluser
+userservicedbsqluser: PasswordFromKeyVaultHere
+Logging:
+  ApplicationInsights:
+    LogLevel:
+      Default: Trace
+      System: Information
+      Microsoft: Error
+  EnableAppInsights: true
+  IncludeScopes: false
+  Debug:
+    LogLevel:
+      Default: Debug
+  Console:
+    LogLevel:
+      Default: Debug
+  EyLogger:
+    Uri: https://acemwpdgt2web19.azurewebsites.net
+    LogLevel:
+      Default: None
+  UseDebugSqlLogger: false
+  EnableDetailedSqlErrors: false
+Services:
+  Client: ''
+  User: ''
+  ServiceCatalog: ''
+CORS:
+  Origins: "*"
+discovery:
+  enabled: false
+eureka:
+  client:
+    serviceUrl: Test
+    ValidateCertificates: false
+  instance:
+    statusPageUrl: "/api/swagger"
+    healthCheckUrlPath: "/api/version"
+    securePortEnabled: true
+spring:
+  application:
+    name: userservice
+  cloud:
+    config:
+      uri: ''
+      validate_certifates: false
+ServiceSecretNames:
+  documentservice: document-ServiceAuthSecret
+  dataservice: integratedatasvc-ClientRouting--ServiceAuthSecret
+  IngestDataFactoryService: IngestFunction--IngestDataFactoryServiceSecret
+  reportingservice: reportingcr-ServiceAuthSecret
+  ingestionservice: ingestcr-ClientRouting--ServiceAuthSecret
+  taxfactimportexport: integrate-ClientRouting--ServiceAuthSecret
+  createsearchindexes: GlobalSearchService-ServiceAuthSecret
+TemplateWorksheetNames:
+  LookupData: Lookup Data
+  UserData: User Data
+  UserDetails: View User Details

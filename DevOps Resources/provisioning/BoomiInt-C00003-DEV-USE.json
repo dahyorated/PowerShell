@@ -1,0 +1,17 @@
+{
+	"parameters": {
+		"serviceName": "BoomiInt",
+		"environment": "Development",
+		"location": "eastus",
+		"clientId": 3
+	},
+	"results": {
+		"sqlServerName": "usedgtp500sql01",
+		"keyVaultName": "USEDGTP004AKV01",
+		"resourceGroup": "GT-EUS-GTP-TENANT-DEV-RSG",
+		"databaseName": [
+			"boomiint00003db"
+		],
+		"databaseJobId": 440593
+	}
+}

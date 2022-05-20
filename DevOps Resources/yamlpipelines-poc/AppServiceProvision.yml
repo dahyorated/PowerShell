@@ -1,0 +1,189 @@
+variables:
+  # deine the variables use for the pipeline
+  # do not store secrets in this
+  location: "westeurope"
+  environment: "Development"
+  ctpService: "Co-Dev"
+  owner: "Dante.DeWitt@ey.com; john.vande.woude@ey.com"
+  deploymentId: "GTPWRK"
+  chargeCode: "39721502"
+  resourceGroup: "GT-WEU-GTP-CORE-POC-RSG"
+  clientid: "00efbc8e-98b3-499d-9cc1-8814e6abb0c2"
+  var_omsWorkspaceName: "GTPOMSWRKSP"
+  omsMyWorkSpaceId: "33cfa4d8-86c2-455f-a584-abdc29973748"
+  subscription: "3efbb09c-de65-4ed0-b6e3-4fc77081ccb3"
+  SKU: "P1V2"
+  rolePurpose: "POC API App"
+  framework: "v4.0"
+  az_rm_tenantid: "5b973f99-77df-4beb-b27d-aa0c70b8482c"
+  _omsWorkspaceName: "GTPOMSWRKSP"
+  _webAppName: 'pocwebapi03'
+  _AppServicePlan: ""
+  spn_key: $(clientid)
+  spn_secret: $(clientSecret)
+#CreateAppSvsPlan: "UW2DGTP123ASP02"
+
+# comment
+
+resources:
+  pipelines:
+    - pipeline: Userservice
+      source: User Service - CI
+
+trigger: none
+stages:
+  - stage: Deploy_Development
+    variables: { sampletxt: "sample" }
+    jobs:
+      - job: Deploy
+        #
+        pool:
+          name: "Hosted VS2017"
+        steps:
+          - script: |
+              echo Deploying the code!
+              echo Retrieve the artifacts
+              echo Create Resource group
+              echo create Application service
+              echo create application service plan
+              echo copy application Service 
+
+            # Download an artifact named 'WebApp' from a specific build run to 'bin' in $(Build.SourcesDirectory)
+          - task: DownloadBuildArtifacts@0
+            displayName: "Download artifact"
+            inputs:
+              buildType: "specific"
+              project: "c739e34c-9543-4c2c-afaf-889e9c9ac7fb"
+              pipeline: "48"
+              specificBuildWithTriggering: true
+              buildVersionToDownload: "latest"
+              downloadType: "single"
+              downloadPath: "$(System.ArtifactsDirectory)"
+              artifactName: "drop"
+
+          - script: |
+              echo  Artifacts directory
+              echo  $(System.ArtifactsDirectory)
+              dir   $(System.ArtifactsDirectory) /s
+              echo  Working directory
+              dir   $(System.DefaultWorkingDirectory) /s
+
+          # Building blocks Create resource group
+          - task: BB-deploy@0
+            displayName: "Create resource group"
+            inputs:
+              ansibleTowerConn: "GTP Ansible"
+              ansibleTowerTemplate: "prod-bb-create-resource-group-V1.1.6 "
+              additionalVars: |
+                {
+                            "var_location": "$(location)",
+                            "var_environment": "$(environment)",
+                            "var_ctpService": "$(ctpService)",
+                            "var_owner": "$(owner)",
+                            "var_deploymentId": "$(deploymentId)",
+                            "var_chargeCode": "$(chargeCode)",
+                            "var_resourceGroupName": "$(resourceGroup)",
+                            "var_productApp": "GTP"
+                          }
+
+          # building block application poolt
+          - task: BB-deploy@0
+            name: appServicePlantsk
+            displayName: "Create App Service Plan"
+            inputs:
+              ansibleTowerConn: "GTP Ansible"
+              ansibleTowerTemplate: "prod-bb-create-app-service-plan-V1.0.1"
+              additionalVars: |
+                {
+                            "var_location": "$(location)",
+                            "var_environment": "$(environment)",
+                            "var_ctpService": "$(ctpService)",
+                            "var_owner": "$(owner)",
+                            "var_deploymentId": "$(deploymentId)",
+                            "var_chargeCode": "$(chargeCode)",
+                            "var_resourceGroupName": "$(resourceGroup)",
+                            "var_productApp": "GTP",
+                            "var_skuCode": "$(SKU)",
+                            "var_numberOfWorkers": 1,
+                            "var_applicationServicePlanOS": "windows",
+                            "var_rolePurpose": "$(rolePurpose)"
+                          }
+#                            "var_appServicePlanName": "$(CreateAppSvsPlan)"
+
+          - script: |
+              echo reference name test
+              echo $(appServicePlantsk.referencename)
+
+          - task: AzurePowerShell@4
+            displayName: "GetServicePlanName"
+            inputs:
+              azureSubscription: "CTP - POC"
+              ScriptType: InlineScript
+              azurePowerShellVersion: "LatestVersion"
+              Inline: |
+                # You can write your azure powershell scripts inline here.
+                # You can also pass predefined and custom variables to this script using arguments
+                Write-Output "Logging into AZ CLI"
+                az login --service-principal --tenant 5b973f99-77df-4beb-b27d-aa0c70b8482c -u $(spn_key) -p $(spn_secret)
+
+                '$CreateAppSvsPlan = az appservice plan list -g $resourceGroup --query [0].name -o tsv'
+                write-host  $CreateAppSvsPlan
+
+          - script: |
+              echo $(appServicePlantsk.RESOURCE_NAME)
+
+          - task: BB-deploy@0
+            name: appServiceCreate
+            displayName: "Create API App"
+            inputs:
+              ansibleTowerConn: "GTP Ansible"
+              ansibleTowerTemplate: "GTP | Platform| Create App Service" #1104
+              additionalVars: |
+                {
+                  "var_environment": "$(environment)",
+                  "var_ctpService": "$(ctpService)",
+                  "var_owner": "$(owner)",
+                  "var_deploymentId": "$(deploymentId)",
+                  "var_chargeCode": "$(chargeCode)",
+                  "var_location": "$(location)",
+                  "var_inputAppServicePlanName": "$(appServicePlantsk.RESOURCE_NAME)",
+                  "var_framework": "$(framework)",
+                  "var_resourceGroupName": "$(resourceGroup)",
+                  "as_tags": "$(rolePurpose)",
+                  "var_deploy_to": "CORE",
+                  "AZURE_RM_SUB": "$(subscription)",
+                  "var_azureRmSubId": "$(subscription)",
+                  "var_azure_rm_subid": "$(subscription)",
+                  "AZURE_RM_TENANTID": "$(az_rm_tenantid)",
+                  "var_omsResourceGroup": "$(resourceGroup)",
+                  "var_omsSubscriptionId": "$(subscription)",
+                  "var_omsWorkspaceName": "$(_omsWorkspaceName)",
+                  "var_omsMyWorkSpaceId": "$(omsMyWorkSpaceId)",
+                  "var_omsMyWorkspaceKey": "$(workspaceSecret)"
+                  }
+                  
+
+          - task: AzureRmWebAppDeployment@4
+            displayName: 'Azure App Service Deploy: $(functionAppName)'
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'CTP - POC'
+              appType: 'webApp'
+              # WebAppName: 'wkshpnotificationservice'
+              WebAppName: '$(appServiceCreate.RESOURCE_NAME)'
+              packageForLinux: '$(System.ArtifactsDirectory)/drop/WebApp.zip'
+              enableCustomDeployment: true
+              DeploymentType: 'webDeploy'
+              TakeAppOfflineFlag: false
+              RemoveAdditionalFilesFlag: true
+              ExcludeFilesFromAppDataFlag: false
+              RenameFilesFlag: false
+
+  - stage: Test
+    jobs:
+      - job: TestOnWindows
+        steps:
+          - script: echo Testing on Windows!
+      - job: TestOnLinux
+        steps:
+          - script: echo Testing on Linux!

@@ -1,0 +1,8 @@
+{
+	"parameters": {
+		"serviceName": "BoomiInt",
+		"environment": "QA",
+		"location": "westeurope",
+		"clientId": 4
+	}
+}

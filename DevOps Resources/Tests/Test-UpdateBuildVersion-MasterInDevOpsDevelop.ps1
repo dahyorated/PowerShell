@@ -1,0 +1,11 @@
+Push-Location "C:\EYdev\devops\scripts";
+$Env:BUILD_SOURCEBRANCH = "refs/heads/master";
+$Env:BUILD_SOURCEBRANCHNAME = 'master';
+$Env:BUILD_REPOSITORY_NAME = 'devops';
+$Env:BUILD_DEFINITIONNAME = 'Test CI';
+$Env:SYSTEM_TEAMPROJECT = 'Global Tax Platform';
+$Env:SYSTEM_TEAMFOUNDATIONSERVERURI = 'https://eyglobaltaxplatform.visualstudio.com';
+$Env:MajorMinorVersionDevelop = '10.2.0';
+$Env:MajorMinorVersionOther = '{"name":"MajorMinorVersionOther","version":1,"releases":[{"branch":"9.3","hotfixVersion":0,"buildNumber":0},{"branch":"9.2","hotfixVersion":1,"buildNumber":0},{"branch":"8.4","hotfixVersion":5,"buildNumber":0}]}';
+Update-BuildVersion;
+Pop-Location;

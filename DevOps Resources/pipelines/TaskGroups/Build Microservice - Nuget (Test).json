@@ -1,0 +1,619 @@
+{
+  "tasks": [
+    {
+      "environment": {
+      },
+      "displayName": "Use .NET Core sdk 2.2.102",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "packageType": "sdk",
+        "version": "2.2.102"
+      },
+      "task": {
+        "id": "b0ce7256-7898-45d3-9cb5-176b752bfea6",
+        "versionSpec": "0.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "Use NuGet 4.4.1",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "versionSpec": "4.4.1",
+        "checkLatest": "false"
+      },
+      "task": {
+        "id": "2c65196a-54fd-4a02-9be8-d9d1837b7c5d",
+        "versionSpec": "0.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "NuGet restore",
+      "alwaysRun": false,
+      "continueOnError": true,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "command": "restore",
+        "solution": "$(solutionPath)",
+        "selectOrConfig": "config",
+        "feedRestore": "",
+        "includeNuGetOrg": "true",
+        "nugetConfigPath": "$(nugetPath)",
+        "externalEndpoints": "",
+        "noCache": "false",
+        "disableParallelProcessing": "true",
+        "packagesDirectory": "",
+        "verbosityRestore": "Detailed",
+        "searchPatternPush": "$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg",
+        "nuGetFeedType": "internal",
+        "feedPublish": "",
+        "publishPackageMetadata": "true",
+        "allowPackageConflicts": "false",
+        "externalEndpoint": "",
+        "verbosityPush": "Detailed",
+        "searchPatternPack": "**/*.csproj",
+        "configurationToPack": "$(BuildConfiguration)",
+        "outputDir": "$(Build.ArtifactStagingDirectory)",
+        "versioningScheme": "off",
+        "includeReferencedProjects": "false",
+        "versionEnvVar": "",
+        "requestedMajorVersion": "1",
+        "requestedMinorVersion": "0",
+        "requestedPatchVersion": "0",
+        "packTimezone": "utc",
+        "includeSymbols": "false",
+        "toolPackage": "false",
+        "buildProperties": "",
+        "basePath": "",
+        "verbosityPack": "Detailed",
+        "arguments": ""
+      },
+      "task": {
+        "id": "333b11bd-d341-40d9-afcf-b32d5ce6f23b",
+        "versionSpec": "2.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "PowerShell Script",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "targetType": "filePath",
+        "filePath": "$(buildVersioningPsScript)",
+        "arguments": "",
+        "script": "# Write your powershell commands here.\n\nWrite-Host \"Hello World\"\n\n# Use the environment variables input below to pass secret variables to this script.",
+        "errorActionPreference": "stop",
+        "failOnStderr": "false",
+        "ignoreLASTEXITCODE": "false",
+        "pwsh": "false",
+        "workingDirectory": ""
+      },
+      "task": {
+        "id": "e213ff0f-5d5c-4791-802d-52ea3e7be1f1",
+        "versionSpec": "2.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "Build",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "command": "build",
+        "publishWebProjects": "true",
+        "projects": "$(solutionPath)",
+        "custom": "",
+        "arguments": "--configuration $(BuildConfiguration) /property:Version=$(Build.BuildNumber)",
+        "publishTestResults": "true",
+        "testRunTitle": "",
+        "zipAfterPublish": "true",
+        "modifyOutputPath": "true",
+        "selectOrConfig": "select",
+        "feedRestore": "",
+        "includeNuGetOrg": "true",
+        "nugetConfigPath": "",
+        "externalEndpoints": "",
+        "noCache": "false",
+        "packagesDirectory": "",
+        "verbosityRestore": "Detailed",
+        "searchPatternPush": "$(Build.ArtifactStagingDirectory)/*.nupkg",
+        "nuGetFeedType": "internal",
+        "feedPublish": "",
+        "publishPackageMetadata": "true",
+        "externalEndpoint": "",
+        "searchPatternPack": "**/*.csproj",
+        "configurationToPack": "$(BuildConfiguration)",
+        "outputDir": "$(Build.ArtifactStagingDirectory)",
+        "nobuild": "false",
+        "includesymbols": "false",
+        "includesource": "false",
+        "versioningScheme": "off",
+        "versionEnvVar": "",
+        "requestedMajorVersion": "1",
+        "requestedMinorVersion": "0",
+        "requestedPatchVersion": "0",
+        "buildProperties": "",
+        "verbosityPack": "Detailed",
+        "workingDirectory": ""
+      },
+      "task": {
+        "id": "5541a522-603c-47ad-91fc-a4b1d163081b",
+        "versionSpec": "2.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "VsTest - testAssemblies",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "testSelector": "testAssemblies",
+        "testAssemblyVer2": "**\\*test*.dll\n!**\\*TestAdapter*.dll\n!**\\obj\\**\n!**\\blacklistedFIles\\test.dll\n!**\\testhost.dll",
+        "testPlan": "",
+        "testSuite": "",
+        "testConfiguration": "",
+        "tcmTestRun": "$(test.RunId)",
+        "searchFolder": "$(System.DefaultWorkingDirectory)",
+        "testFiltercriteria": "",
+        "runOnlyImpactedTests": "False",
+        "runAllTestsAfterXBuilds": "50",
+        "uiTests": "false",
+        "vstestLocationMethod": "version",
+        "vsTestVersion": "latest",
+        "vstestLocation": "",
+        "runSettingsFile": "$(runSettingsFile)",
+        "overrideTestrunParameters": "",
+        "pathtoCustomTestAdapters": "",
+        "runInParallel": "False",
+        "runTestsInIsolation": "False",
+        "codeCoverageEnabled": "true",
+        "otherConsoleOptions": "/framework:\"NETCoreApp,Version=v2.1\"",
+        "distributionBatchType": "basedOnTestCases",
+        "batchingBasedOnAgentsOption": "autoBatchSize",
+        "customBatchSizeValue": "10",
+        "batchingBasedOnExecutionTimeOption": "autoBatchSize",
+        "customRunTimePerBatchValue": "60",
+        "dontDistribute": "False",
+        "testRunTitle": "",
+        "platform": "",
+        "configuration": "",
+        "publishRunAttachments": "true",
+        "diagnosticsEnabled": "True",
+        "collectDumpOn": "onAbortOnly",
+        "rerunFailedTests": "False",
+        "rerunType": "basedOnTestFailurePercentage",
+        "rerunFailedThreshold": "30",
+        "rerunFailedTestCasesMaxLimit": "5",
+        "rerunMaxAttempts": "3"
+      },
+      "task": {
+        "id": "ef087383-ee5e-42c7-9a53-ab56c98420f9",
+        "versionSpec": "2.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "count lines of code",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "workingFolder": "",
+        "clocCliDownloadUrl": "https://github.com/AlDanial/cloc/releases/download/1.80/cloc-1.80.exe",
+        "arguments": "$(solutionFolder) --exclude-dir=node_modules,obj,bin,.vs"
+      },
+      "task": {
+        "id": "7b598338-cf0d-4c3f-acc2-4967b6202533",
+        "versionSpec": "1.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "Publish",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "command": "publish",
+        "publishWebProjects": "false",
+        "projects": "$(publishPath)",
+        "custom": "",
+        "arguments": "--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory) /property:Version=$(Build.BuildNumber)",
+        "publishTestResults": "true",
+        "testRunTitle": "",
+        "zipAfterPublish": "false",
+        "modifyOutputPath": "true",
+        "selectOrConfig": "select",
+        "feedRestore": "",
+        "includeNuGetOrg": "true",
+        "nugetConfigPath": "",
+        "externalEndpoints": "",
+        "noCache": "false",
+        "packagesDirectory": "",
+        "verbosityRestore": "Detailed",
+        "searchPatternPush": "$(Build.ArtifactStagingDirectory)/*.nupkg",
+        "nuGetFeedType": "internal",
+        "feedPublish": "",
+        "publishPackageMetadata": "true",
+        "externalEndpoint": "",
+        "searchPatternPack": "**/*.csproj",
+        "configurationToPack": "$(BuildConfiguration)",
+        "outputDir": "$(Build.ArtifactStagingDirectory)",
+        "nobuild": "false",
+        "includesymbols": "false",
+        "includesource": "false",
+        "versioningScheme": "off",
+        "versionEnvVar": "",
+        "requestedMajorVersion": "1",
+        "requestedMinorVersion": "0",
+        "requestedPatchVersion": "0",
+        "buildProperties": "",
+        "verbosityPack": "Detailed",
+        "workingDirectory": ""
+      },
+      "task": {
+        "id": "5541a522-603c-47ad-91fc-a4b1d163081b",
+        "versionSpec": "2.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "Publish Scripts",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "PathtoPublish": "$(buildScriptsFolder)",
+        "ArtifactName": "scripts",
+        "ArtifactType": "Container",
+        "TargetPath": "\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)",
+        "Parallel": "false",
+        "ParallelCount": "8",
+        "FileCopyOptions": ""
+      },
+      "task": {
+        "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+        "versionSpec": "1.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "Publish All Scripts",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "PathtoPublish": "$(allScriptsFolder)",
+        "ArtifactName": "allScripts",
+        "ArtifactType": "Container",
+        "TargetPath": "\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)",
+        "Parallel": "false",
+        "ParallelCount": "8",
+        "FileCopyOptions": ""
+      },
+      "task": {
+        "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+        "versionSpec": "1.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "Publish Artifact",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "PathtoPublish": "$(build.artifactstagingdirectory)",
+        "ArtifactName": "drop",
+        "ArtifactType": "Container",
+        "TargetPath": "\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)",
+        "Parallel": "false",
+        "ParallelCount": "8",
+        "FileCopyOptions": ""
+      },
+      "task": {
+        "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+        "versionSpec": "1.*",
+        "definitionType": "task"
+      }
+    },
+    {
+      "environment": {
+      },
+      "displayName": "Check build quality",
+      "alwaysRun": false,
+      "continueOnError": false,
+      "condition": "succeeded()",
+      "enabled": true,
+      "timeoutInMinutes": 0,
+      "inputs": {
+        "checkWarnings": "false",
+        "warningFailOption": "build",
+        "warningThreshold": "0",
+        "forceFewerWarnings": "false",
+        "allowWarningVariance": "false",
+        "warningVariance": "",
+        "warningFilters": "",
+        "inclusiveFiltering": "false",
+        "showStatistics": "false",
+        "warningTaskFilters": "/^(((android|xcode|gradlew)\\s+)?build|ant|maven|cmake|gulp)/i",
+        "checkCoverage": "true",
+        "coverageFailOption": "build",
+        "coverageType": "blocks",
+        "customCoverageType": "",
+        "coverageThreshold": "60",
+        "forceCoverageImprovement": "false",
+        "coverageUpperThreshold": "80",
+        "ignoreDecreaseAboveUpperThreshold": "true",
+        "allowCoverageVariance": "true",
+        "coverageVariance": "$(variance)",
+        "coverageDeltaType": "percentage",
+        "buildConfiguration": "",
+        "buildPlatform": "",
+        "explicitFilter": "false",
+        "includePartiallySucceeded": "true",
+        "baseDefinitionFilter": "*",
+        "baseDefinitionId": "",
+        "baseRepoId": "",
+        "baseBranchRef": "",
+        "runTitle": "",
+        "disableCertCheck": "false"
+      },
+      "task": {
+        "id": "16a2ad20-f191-11e5-bed4-ab22bcd17937",
+        "versionSpec": "6.*",
+        "definitionType": "task"
+      }
+    }
+  ],
+  "runsOn": [
+    "Agent"
+  ],
+  "revision": 1,
+  "createdBy": {
+    "displayName": "Brad Friedlander",
+    "id": "23725266-5bf7-603d-b232-59edf9d07071",
+    "uniqueName": "Brad.Friedlander@ey.com"
+  },
+  "createdOn": "2019-10-14T11:45:20.107Z",
+  "modifiedBy": {
+    "displayName": "Brad Friedlander",
+    "id": "23725266-5bf7-603d-b232-59edf9d07071",
+    "uniqueName": "Brad.Friedlander@ey.com"
+  },
+  "modifiedOn": "2019-10-14T11:45:20.107Z",
+  "id": "c196b11c-66f4-438c-a604-32f73c112eaf",
+  "name": "Build Microservice - Nuget (Test)",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "isTest": false
+  },
+  "iconUrl": "https://cdn.vsassets.io/v/20180823T122705/_content/icon-meta-task.png",
+  "friendlyName": "Build Microservice - Nuget (Test)",
+  "description": "",
+  "category": "Build",
+  "definitionType": "metaTask",
+  "author": "Eric Means",
+  "demands": [
+  ],
+  "groups": [
+  ],
+  "inputs": [
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "allScriptsFolder",
+      "label": "allScriptsFolder",
+      "defaultValue": "src/EY/GTP/IAC",
+      "required": true,
+      "type": "filePath",
+      "helpMarkDown": "The folder or file path to publish. This can be a fully-qualified path or a path relative to the root of the repository. Wildcards are not supported. [Variables](https://go.microsoft.com/fwlink/?LinkID=550988) are supported. Example: $(Build.ArtifactStagingDirectory)",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "BuildConfiguration",
+      "label": "BuildConfiguration",
+      "defaultValue": "release",
+      "required": true,
+      "type": "string",
+      "helpMarkDown": "",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "buildScriptsFolder",
+      "label": "buildScriptsFolder",
+      "defaultValue": "src/EY/GTP/IAC/BuildScripts",
+      "required": true,
+      "type": "filePath",
+      "helpMarkDown": "The folder or file path to publish. This can be a fully-qualified path or a path relative to the root of the repository. Wildcards are not supported. [Variables](https://go.microsoft.com/fwlink/?LinkID=550988) are supported. Example: $(Build.ArtifactStagingDirectory)",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "buildVersioningPsScript",
+      "label": "buildVersioningPsScript",
+      "defaultValue": "src/EY/GTP/IAC/BuildScripts/VSTSRMScripts/VSTSRMScripts/BuildVersioning.ps1",
+      "required": true,
+      "type": "filePath",
+      "helpMarkDown": "Path of the script to execute. Must be a fully qualified path or relative to $(System.DefaultWorkingDirectory).",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "nugetPath",
+      "label": "nugetPath",
+      "defaultValue": "src/EY/GTP/nuget.config",
+      "required": true,
+      "type": "filePath",
+      "helpMarkDown": "The NuGet.config in your repository that specifies the feeds from which to restore packages.",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "publishPath",
+      "label": "publishPath",
+      "defaultValue": "",
+      "required": true,
+      "type": "multiLine",
+      "helpMarkDown": "The path to the csproj file(s) to use. You can use wildcards (e.g. **/*.csproj for all .csproj files in all subfolders).",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "runSettingsFile",
+      "label": "runSettingsFile",
+      "defaultValue": "src/EY/GTP/runsettings.runsettings",
+      "required": true,
+      "type": "filePath",
+      "helpMarkDown": "Path to runsettings or testsettings file to use with the tests.",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "solutionFolder",
+      "label": "solutionFolder",
+      "defaultValue": "",
+      "required": true,
+      "type": "string",
+      "helpMarkDown": "",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "solutionPath",
+      "label": "solutionPath",
+      "defaultValue": "",
+      "required": true,
+      "type": "string",
+      "helpMarkDown": "The path to the solution file to restore and build.",
+      "groupName": ""
+    },
+    {
+      "aliases": [
+      ],
+      "options": {
+      },
+      "properties": {
+      },
+      "name": "variance",
+      "label": "variance",
+      "defaultValue": "1",
+      "required": true,
+      "type": "string",
+      "helpMarkDown": "Specify the maximum temporary decrease of code coverage that will not fail the build. You should set this value as low as possible. [[Docs]](https://github.com/MicrosoftPremier/VstsExtensions/blob/master/BuildQualityChecks/en-US/CodeCoveragePolicy.md#coverageVariance)",
+      "groupName": ""
+    }
+  ],
+  "satisfies": [
+  ],
+  "sourceDefinitions": [
+  ],
+  "dataSourceBindings": [
+  ],
+  "instanceNameFormat": "Task group: Build Microservice - Nuget (Test) $(allScriptsFolder)",
+  "preJobExecution": {
+  },
+  "execution": {
+  },
+  "postJobExecution": {
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "SetSprintVariableControls",
+  "version": 1,
+  "excludedSprints": [
+    "1",
+    "IP"
+  ]
+}

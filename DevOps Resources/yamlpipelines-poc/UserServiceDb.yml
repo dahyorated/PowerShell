@@ -1,0 +1,316 @@
+variables:
+
+  location: 'westeurope'
+  environment: 'Development'
+  ctpService: 'Co-Dev'
+  owner: 'Dante.DeWitt@ey.com; john.vande.woude@ey.com'
+  deploymentId: 'GTPWRK'
+  chargeCode: '39721502'
+  resourceGroup: 'GT-WEU-GTP-CORE-POC-RSG'
+  rolePurpose: 'User Service DB'
+  clientid: '00efbc8e-98b3-499d-9cc1-8814e6abb0c2'
+  var_omsWorkspaceName: 'GTPOMSWRKSP'
+  omsMyWorkSpaceId: '33cfa4d8-86c2-455f-a584-abdc29973748'
+  DSC_AUTOMATION_URI: "https://uks-agentservice-prod-1.azure-automation.net/accounts/1c6117bc-8c65-4ae1-b968-345a5027b949"
+  DSC_AUTOMATION_KEY: "hLNDMAtzqzVGv8/7PUqyPWolV/rFe44Y83XTL7IulcgfwsMwx1K/QVZ04OA3y/h1tFkeswjGqXIoXLQutKSg6Q=="
+  CWP_CUSTOMER: "_r0-EV3fQMyczVWQ-mytaQ"
+  CWP_DOMAIN_ID: "_P286G92SsuCwJVKq5ivtg"
+  CWP_CLIENT_ID: "O2ID._r0-EV3fQMyczVWQ-mytaQ._P286G92SsuCwJVKq5ivtg.pu6jallivccad4a55enrt1jvkq"
+  CWP_CUSTOMER_SECRET: "86751a0fc61c94cda7f7a77b5366885a9977a585db86cf8cffc6c1e8b4140e37"
+  CWP_CLIENT_SECRET: "136olflkrdt16tqc7ssujvfcr5u6adkserf9"
+  SENDGRID_USER: "apikey"
+  SENDGRID_KEY: "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"
+  EMAIL_RECIPIENTS: "Wuelfhis Asuaje <Wuelfhis.Alexis.Asuaje.Pazo@ar.ey.com>, Lukas Udstuen <Lukas.Udstuen@ar.ey.com>"
+  SQL_PERMS_URL: "http://gtpprovisioning.sbp.eyclienthub.com/api/DatabaseUserCreation?code=N7Z6DPfxl6pZOt8RyTjSdQHuiYq7xRWIYAepJm5GaqmMj//BoLDLbg=="
+  FA_TOWER_URL: "http://gtpprovisioning.sbp.eyclienthub.com/api/tower?code=N7Z6DPfxl6pZOt8RyTjSdQHuiYq7xRWIYAepJm5GaqmMj//BoLDLbg=="
+  FA_CHECKJOB_URL: "http://usedgtp001tmp01.trafficmanager.net/api/JobStatus?code=N7Z6DPfxl6pZOt8RyTjSdQHuiYq7xRWIYAepJm5GaqmMj//BoLDLbg=="
+  AZURE_RM_CLIENTID_CORE: "0d0d30ab-a5fd-4a60-90e1-07e50a483d10"
+  AZURE_RM_TENANTID_CORE: "5b973f99-77df-4beb-b27d-aa0c70b8482c"
+  AZURE_RM_SECRET_CORE: "ZTIjwWDaY0M3#V13k7UQtH1FmPL9c19"
+  AZURE_RM_SUB_CORE: "5aeb8557-cab7-41ac-8603-9f94ad233efc"
+  AZURE_RM_CLIENTID_TENANT: "3225ef21-ec36-47d8-b78a-13fb25004df0"
+  AZURE_RM_TENANTID_TENANT: "5b973f99-77df-4beb-b27d-aa0c70b8482c"
+  AZURE_RM_SECRET_TENANT: "SaL13O7q#5wC15!!gvM@BnJfVum16FTD"
+  AZURE_RM_SUB_TENANT: "0e24abb5-5296-4edf-a4ba-d95f6fdc39d1"
+  OMS_WORKSPACEID_CORE: "e5a398ee-8c7e-4ed7-bcad-33157352b805"
+  OMS_WORKSPACEKEY_CORE: "G/+Z2yHX7r7EDx6pxaySxuUXRRz5ditTsyhuF7RU9/zexbLaI1+yZldXYfwPFW52QhM6FJp2aK9LwIte0u1lUg=="
+  OMS_WORKSPACEID_TENANT: "4bf56797-aa74-4237-a46c-922b1ce91cb6"
+  OMS_WORKSPACEKEY_TENANT: "pcs7h0fbQ+A96O5j6OnQttQgxaGGmGbvjH0vwnGJIwp4q06suEq8IARHLaGGHVqeirLhzPsBWORQpwk502vG+g=="
+  OMS_WORKSPACEID_CORE_PROD: "78aadef9-119d-4999-979f-70f9308296b5"
+  OMS_WORKSPACEKEY_CORE_PROD: "g6JqSlqo/3SXaB89xmDRbM1HYuU231B4FWMbgtuRyM2U9sa8uUsDTM5SzLWSCal+PpGKUkPYlocNQxImZHXBBA=="
+  OMS_WORKSPACEID_TENANT_PROD: "9e606b10-add5-4bd2-9219-b0715bb25f71"
+  OMS_WORKSPACEKEY_TENANT_PROD: "ZPKrcCVoo1JjN+vbQxceObFS95oQh48HtO4HOQSekjZ8Yd30pZGEwgE1GHSAqrefVhltv4NVeDaCeQz7N9pOsw=="
+  AZURE_RM_SUB_CORE_PROD: "e45bb7e2-b46d-4f73-b12f-66c7ed1c97b7"
+  AZURE_RM_SUB_TENANT_PROD: "e999aa97-90f0-4f21-b9d8-522893f76062"
+  ARTIFACT_SAS_TOKEN: "sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2050-01-30T22:28:43Z&st=2019-01-30T14:28:43Z&spr=https&sig=lXfK5DYfDpMvAQwBOKhGkYXD5wGiPp8fKEj67R%2BKULU%3D"
+  SOFTWARE_SAS_TOKEN: "sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2050-01-30T22:30:58Z&st=2019-01-30T14:30:58Z&spr=https&sig=DEHVac8DwXUlDPHhH0IPidAIFBtvCZq3kpSEqsm6e%2Bo%3D"
+
+#make the following  secrets
+  workspaceSecret: 'JaVVpoh8dzrfdi1j47oD2lMELXCVT9F0hZx6wcj/JaQmZWCt06dIt0AGxwNJNShvJhPKssNYzj3hHSfed9RSFw=='
+  sql_permission_uri: 'http://gtpprovisioning.sbp.eyclienthub.com/api/DatabaseUserCreation?code=N7Z6DPfxl6pZOt8RyTjSdQHuiYq7xRWIYAepJm5GaqmMj//BoLDLbg=='
+
+resources:
+ pipelines:
+   - pipeline: UserServiceDB
+     source: UserService Databases - CI
+     trigger: 
+      branches:
+        include: 
+          - develop
+ 
+trigger: none
+stages:
+- stage: Deploy
+  variables: { 
+    sampletxt: 'sample' } 
+  jobs:
+  - job: Deploy
+    pool:
+      name: 'Hosted VS2017'
+    steps:
+      - task: DownloadBuildArtifacts@0
+        displayName: 'Download Artifact'
+        inputs:
+          buildType: 'specific'
+          project: 'c739e34c-9543-4c2c-afaf-889e9c9ac7fb'
+          pipeline: '161'
+          specificBuildWithTriggering: true
+          buildVersionToDownload: 'latest'
+          downloadType: 'single'
+          downloadPath: '$(System.ArtifactsDirectory)'
+          artifactName: 'Database Build Artifact'
+      
+      - script: |
+          echo  Artifacts directory
+          echo  $(System.ArtifactsDirectory)
+          dir   $(System.ArtifactsDirectory) /s
+          echo  Working directory
+          dir   $(System.DefaultWorkingDirectory) /s
+
+#       - task: BB-deploy@0
+#         displayName: 'Create/Verify Resource Group'
+#         inputs:
+#           ansibleTowerConn: 'GTP Ansible'
+#           ansibleTowerTemplate: 'prod-bb-create-resource-group-V1.1.6 '
+#           additionalVars: |
+#             {
+#                         "var_location": "$(location)",
+#                         "var_environment": "$(environment)",
+#                         "var_ctpService": "$(ctpService)",
+#                         "var_owner": "$(owner)",
+#                         "var_deploymentId": "$(deploymentId)",
+#                         "var_chargeCode": "$(chargeCode)",
+#                         "var_resourceGroupName": "$(resourceGroup)",
+#                         "var_productApp": "GTP"
+#                       }
+#       - task: BB-deploy@0
+#         displayName: 'Create/Verify SQL Server'
+#         inputs:
+#           ansibleTowerConn: 'GTP Ansible'
+#           ansibleTowerTemplate: 'prod-bb-create-sql-server-V1.2.0'
+#           additionalVars: |
+#             {
+#               "var_environment": "$(environment)",
+#               "var_ctpService": "$(ctpService)",
+#               "var_owner": "$(owner)",
+#               "var_deploymentId": "$(deploymentId)",
+#               "var_chargeCode": "$(chargeCode)",
+#               "var_location": "$(location)",
+#               "var_resourceGroupName": "$(resourceGroup)",
+#               "as_tags": "[$(rolePurpose)]",
+#               "var_deploy_to": "CORE",
+#               "AZURE_RM_SUB": "$(subscription)",
+#               "var_azureRmSubId": "$(subscription)",
+#               "var_azure_rm_subid": "$(subscription)",
+#               "AZURE_RM_TENANTID": "5b973f99-77df-4beb-b27d-aa0c70b8482c",
+#               "var_omsResourceGroup": "$(resourceGroup)",
+#               "var_omsSubscriptionId": "$(subscription)",
+#               "var_omsWorkspaceName": "GTPOMSWRKSP",
+#               "omsMyWorkSpaceId": "33cfa4d8-86c2-455f-a584-abdc29973748",
+#               "var_omsMyWorkspaceKey": "$(workspaceSecret)",
+#               "var_sqlName": "euwdgtpwrksql08" 
+#               }
+# var_sqlName shouldn't be present to generate name
+
+#       - task: BB-deploy@0
+#         displayName: 'Create/Verify Elastic pool'
+#         inputs:
+#           ansibleTowerConn: 'GTP Ansible'
+#           ansibleTowerTemplate: 'prod-bb-create-sql-elastic-pool-V1.0.0'
+#           additionalVars:  |
+#                 {
+#                   "var_environment": "$(environment)",
+#                   "var_ctpService": "$(ctpService)",
+#                   "var_owner": "$(owner)",
+#                   "var_deploymentId": "$(deploymentId)",
+#                   "var_chargeCode": "$(chargeCode)",
+#                   "var_location": "$(location)",
+#                   "var_resourceGroupName": "$(resourceGroup)",
+#                   "as_tags": "[$(rolePurpose)]",
+#                   "var_deploy_to": "CORE",
+#                   "AZURE_RM_SUB": "$(subscription)",
+#                   "var_azureRmSubId": "$(subscription)",
+#                   "var_azure_rm_subid": "$(subscription)",
+#                   "AZURE_RM_TENANTID": "5b973f99-77df-4beb-b27d-aa0c70b8482c",
+#                   "var_omsResourceGroup": "$(resourceGroup)",
+#                   "var_omsSubscriptionId": "$(subscription)",
+#                   "var_omsWorkspaceName": "GTPOMSWRKSP",
+#                   "omsMyWorkSpaceId": "33cfa4d8-86c2-455f-a584-abdc29973748",
+#                   "var_omsMyWorkspaceKey": "$(workspaceSecret)",
+#                   "var_serverName": "euwdgtpwrksql08",   
+#                   "var_sqlServerName": "euwdgtpwrksql08",
+#                   "var_elasticPoolName": "EUWDGTPWRKAEP03"
+#                 }
+#TODO var_serverName and var_sqlServerName are hard-coded- change to variable 
+# var_elasticPoolName shouldn't be present to generate name
+      - task: BB-deploy@0
+        name: "DeploySQLDB"
+        displayName: "Create SQL database Paas"
+        inputs:
+          ansibleTowerConn: "GTP Ansible"
+          ansibleTowerTemplate: "prod-bb-create-sql-database-V1.1.2"
+          additionalVars:  |
+              {
+                "var_environment": "$(environment)",
+                "var_ctpService": "$(ctpService)",
+                "var_owner": "$(owner)",
+                "var_deploymentId": "$(deploymentId)",
+                "var_chargeCode": "$(chargeCode)",
+                "var_location": "$(location)",
+                "var_resourceGroupName": "$(resourceGroup)",
+                "as_tags": "[$(rolePurpose)]",
+                "var_deploy_to": "CORE",
+                "var_omsResourceGroup": "$(resourceGroup)",
+                "var_omsSubscriptionId": "3efbb09c-de65-4ed0-b6e3-4fc77081ccb3",
+                "var_omsWorkspaceName": "GTPOMSWRKSP",
+                "omsMyWorkSpaceId": "33cfa4d8-86c2-455f-a584-abdc29973748",
+                "var_omsMyWorkspaceKey": "$(workspaceSecret)",
+                "var_serverName": "euwdgtpwrksql08",
+                "var_dbName": "userservicedb",
+                "var_elasticPoolName": "EUWDGTPWRKAEP03",
+                "var_azureRmSubId": "3efbb09c-de65-4ed0-b6e3-4fc77081ccb3",
+                "var_azure_rm_subid": "3efbb09c-de65-4ed0-b6e3-4fc77081ccb3"
+                
+              }
+
+#TODO "var_elasticPoolName", var_serverName from variable
+      # - task: BB-deploy@0
+      #   displayName: 'Create SQL database Secrets and UserNames'
+      #   inputs:
+      #     ansibleTowerConn: 'GTP Ansible'
+      #     ansibleTowerTemplate: 1096
+      #     additionalVars:  |
+      #         {
+      #           "var_environment": "$(environment)",
+      #           "var_ctpService": "$(ctpService)",
+      #           "var_owner": "$(owner)",
+      #           "var_deploymentId": "$(deploymentId)",
+      #           "var_chargeCode": "$(chargeCode)",
+      #           "var_location": "$(location)",
+      #           "var_resourceGroupName": "$(resourceGroup)",
+      #           "as_tags": "[$(rolePurpose)]",
+      #           "var_deploy_to": "CORE",
+      #           "AZURE_RM_SUB": "$(subscription)",
+      #           "var_azureRmSubId": "$(subscription)",
+      #           "var_azure_rm_subid": "$(subscription)",
+      #           "AZURE_RM_TENANTID": "5b973f99-77df-4beb-b27d-aa0c70b8482c",
+      #           "var_omsResourceGroup": "$(resourceGroup)",
+      #           "var_omsSubscriptionId": "$(subscription)",
+      #           "var_omsWorkspaceName": "GTPOMSWRKSP",
+      #           "omsMyWorkSpaceId": "33cfa4d8-86c2-455f-a584-abdc29973748",
+      #           "var_omsMyWorkspaceKey": "$(workspaceSecret)",
+      #           "var_serverName": "euwdgtpwrksql08",
+      #           "var_dbName": "userservicedb",
+      #           "db_list": "userservicedb",
+      #           "var_keyVaultName": "EUWDGTPWRKAKV01",
+      #           "var_sql_permission_uri": "$(sql_permission_uri)",
+      #           "var_templateRepoUrl": "https://uw2dgtp001sto01.blob.core.windows.net",
+      #           "var_templateSasToken": "{{ ARTIFACT_SAS_TOKEN}}",
+      #           "var_softwareRepoUrl": "https://uw2dgtp001sto02.blob.core.windows.net",
+      #           "var_softwareSasToken": "{{ SOFTWARE_SAS_TOKEN}}",
+      #           "var_productApp": "GTP",
+      #           "var_buildingBlock": "platform",
+      #           "var_buildingBlockVersion": "V1.0.0",
+      #           "KV_CLIENT_ID": "{{ AZURE_RM_CLIENTID_CORE }}",
+      #           "KV_TENTANT_ID": "{{ AZURE_RM_TENANTID_CORE }}",
+      #           "KV_RM_SECRET": "{{ AZURE_RM_SECRET_CORE }}",
+      #           "KV_SUBS_ID": "{{ AZURE_RM_SUB_CORE }}"
+      #         }
+
+      - task: AzurePowerShell@4
+        name: CreateUserandPassword
+        inputs:
+          azureSubscription: 'CTP - POC'
+          ScriptType: 'InlineScript'
+          Inline: |
+            #todo - make this parametrized
+            
+            $kv = 'EUWDGTPWRKAKV01'
+            $sqlServer = 'euwdgtpwrksql08'
+            $dbName = "$(DeploySQLDB.RESOURCE_NAME)"
+            $subscriptionId = "3efbb09c-de65-4ed0-b6e3-4fc77081ccb3"
+            
+            Write-Output "Set Context"
+            Set-AzContext -SubscriptionId $subscriptionId       
+            
+            $adminSqlUserSecretName = "$sqlServer-sqlServerAdminUsername"
+            $sdminSqlPassSecretName = "$sqlServer-sqlServerAdminPassword"
+            
+            #get admin password for the server
+            Write-Output "Get admin pass and user from KV"
+            $adminSqlUser = (Get-AzKeyVaultSecret -VaultName $kv -Name $adminSqlUserSecretName).SecretValueText
+            $adminSqlPass = (Get-AzKeyVaultSecret -VaultName $kv -Name $sdminSqlPassSecretName).SecretValueText
+            
+            #todo ensure meets infosec requirements
+            $PW = [System.Web.Security.Membership]::GeneratePassword(30,10)
+            
+            #connstring for admin access
+            $connString = "Server=tcp:$sqlServer.database.windows.net,1433;Initial Catalog=$dbName;Persist Security Info=False;User ID=$adminSqlUser;Password=$adminSqlPass;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+            
+            #connect to db to create the user
+            $sqlConnection = New-Object System.Data.SqlClient.SqlConnection
+            $sqlConnection.ConnectionString = $connString
+            Write-Output "open db connection"
+            $sqlConnection.Open();
+            
+            $dbuser = $dbName + "user"
+            
+            $sqlText = "DROP USER IF EXISTS $dbuser  "
+            $cmd = new-object System.Data.SqlClient.SqlCommand($sqlText, $sqlConnection);
+            Write-Output "create user in database"
+            $cmd.ExecuteNonQuery();
+            
+            $sqlText = "CREATE USER $dbUser WITH PASSWORD = '$PW';"
+            $cmd = new-object System.Data.SqlClient.SqlCommand($sqlText, $sqlConnection);
+            Write-Output "create user in database"
+            $cmd.ExecuteNonQuery();
+            
+            $secretConnString = "Server=tcp:$sqlServer.database.windows.net,1433;Initial Catalog=$dbName;Persist Security Info=False;User ID=$dbuser;Password=$PW;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+            
+            Write-Output "create keyault entries"
+            #create connection string secret
+            $secureString = $secretConnString | ConvertTo-SecureString -AsPlainText -Force
+            Set-AzKeyVaultSecret -VaultName $kv -Name "connectionstring-$dbuser" -SecretValue $secureString
+            
+            #create user 
+            $secureString = $PW | ConvertTo-SecureString -AsPlainText -Force
+            Set-AzKeyVaultSecret -VaultName $kv -Name $dbuser -SecretValue $secureString
+
+            #set password as a variable for later use
+            Write-Host "##vso[task.setvariable variable=DBPASSWORD;isOutput=true]$PW"
+
+            #todo - db encryption string
+          azurePowerShellVersion: 'LatestVersion'
+      - script: echo '$(CreateUserandPassword.DBPASSWORD)''  
+
+#ending comment
+      - task: RedgateSqlChangeAutomationRelease@3
+        displayName: 'Perform DeployFromPackage'
+        inputs:
+          Operation: DeployFromPackage
+          PackagePath: '$(System.ArtifactsDirectory)/Database Build Artifact/'
+          TargetDatabaseServer: euwdgtpwrksql08.database.windows.net
+          TargetDatabaseName: userservicedb
+          TargetDatabaseUsername: userservicedbuser
+          TargetDatabasePassword: '$(CreateUserandPassword.DBPASSWORD)'
+          FilterPath: 'Database Build Artifact/scmfilter/globalfilter.scpf'

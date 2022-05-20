@@ -1,0 +1,12 @@
+{
+	"name": "ReleaseRepositories",
+	"version": 1,
+	"repositories": [
+		"alteryx",
+		"APIM",
+		"BoardWalkRepo",
+		"Global Tax Platform",
+		"GtpDataWarehouse",
+		"TestAutomation"
+	]
+}

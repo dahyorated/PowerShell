@@ -1,0 +1,10 @@
+Push-Location "C:\EYdev\devops\scripts";
+#Write-Host "Run for start weekend before start of Sprint 1" -ForegroundColor Cyan;
+#Set-SprintVariables -CurrentDateTime '2020-03-22 23:00';
+#Write-Host "Run for start weekend before start of IP Sprint" -ForegroundColor Cyan;
+#Set-SprintVariables -CurrentDateTime '2020-03-06 23:00';
+#Write-Host "Run for start of IP Sprint" -ForegroundColor Cyan;
+#Set-SprintVariables -CurrentDateTime '2020-03-08 23:00';
+Set-SprintVariables -ProjectName 'DevOpsTest' -Verbose;
+#Set-SprintVariables;
+Pop-Location;

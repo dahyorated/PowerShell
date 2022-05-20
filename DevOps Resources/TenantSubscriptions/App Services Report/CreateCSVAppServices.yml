@@ -1,0 +1,113 @@
+---
+  - connection: local
+    gather_facts: yes
+    hosts: localhost
+
+    vars:
+      var_emailRecipients: "{{ EMAIL_RECIPIENTS | mandatory }}"
+      var_deploy_to: "{{var_deploy_to}}"
+      var_location: "{{ var_location }}"
+      var_file: "report.csv"
+      var_sendgriduser: "{{ SENDGRID_USER }}"
+      var_sendgridkey: "{{ SENDGRID_KEY }}"
+      
+    tasks:
+
+    - name: AZ Login to Azure
+      shell: >
+           az login --service-principal
+           -u "{{ AZURE_RM_CLIENTID }}"
+           -p "{{ AZURE_RM_SECRET }}"
+           --tenant "{{ AZURE_RM_TENANTID }}" && az account set --subscription "{{ var_azure_rm_subid }}"
+      no_log: false   
+
+    
+    - name: Save RSG depending on TENANT or CORE
+      set_fact:
+        var_resourceGroupName:  "{% if var_deploy_to == 'TENANT' %}{{ var_tenantResourceGroupName }}{% else %}{{ var_resourceGroupName }}{% endif %}"
+      
+    - name: create shell script
+      copy:
+        dest: "script.sh"
+        content: |
+          Names=$(az resource list -g "{{ var_resourceGroupName }}" --resource-type "Microsoft.Web/sites" --query "sort_by([].{Name:name},  &Name)" -o table)
+          csvfile="report.csv"
+          echo "Name;ResourceType;Location;RolePurpose;ResourceGroup;Subscription;SubscriptionName" > $csvfile
+          for Name in $Names
+          do 
+            if [ "$Name" != "Name" ] && [ "$Name" != "---------------" ] ; then
+              ResourceType=$(az resource list -g "{{ var_resourceGroupName }}" -n $Name --query [].type -o tsv)
+              Location=$(az resource list -g "{{ var_resourceGroupName }}" -n $Name --query [].location -o tsv)
+              RolePurpose=$(az resource list -g "{{ var_resourceGroupName }}" -n $Name --query [].tags.ROLE_PURPOSE -o tsv)
+              ResourceGroup=$"{{ var_resourceGroupName }}"
+              Subscription=$(az resource list -g "{{ var_resourceGroupName }}" -n $Name --query [].id -o tsv)
+              Subscription_Sub="$(cut -d'/' -f3 <<< $Subscription)"
+              SubscriptionName=$(az account show -s $Subscription_Sub --query name -o tsv)
+              Todo=$Name";"$ResourceType";"$Location";"$RolePurpose";"$ResourceGroup";"$Subscription_Sub";"$SubscriptionName
+              echo $Todo >> $csvfile
+            fi
+          done
+      no_log: false 
+
+
+    - name: Execute report script
+      command: sh script.sh
+
+#############################################################################################
+
+    - name: encode file
+      shell: cat report.csv
+      register: baseoutput 
+
+    - name: Send Email
+      uri:
+          url: https://api.sendgrid.com/v3/mail/send
+          method: POST
+          body_format: json
+          headers:
+            Content-Type: "application/json"
+            Authorization: "Bearer {{ var_sendgridkey }}"
+          body: {
+            attachments: [
+                {                    
+                    "content": "{{ baseoutput.stdout | b64encode}}",
+                    "content_id": "{{ 99999999 | random | to_uuid }}",
+                    "disposition": "attachment",
+                    "filename": "report.csv",
+                    "name": "report",
+                    "type": "csv"
+                }],
+            from: {
+                    "email": "NO-REPLY@noreploy.com",
+                    "name": " (GTP - Mail Service)"
+                },
+            content: [
+                    {
+                        "type": "text/html",
+                        "value": "<html><p>AppServices Report</p></img></html>"
+                    }
+                ],
+            personalizations : [
+                    {                              
+                        "subject": "AppServices Report",
+                        "to": [
+                            {
+                                "email": "{{var_emailRecipients}}"
+                            }
+                        ]
+                    }
+                ]
+                }
+          status_code: 202
+          timeout: 60          
+      register: Response        
+
+
+    - name: Gathering Deployment facts
+      set_fact:
+        result: 
+            resourceGroup: "{{var_resourceGroupName}}"
+            emailRecipients: "{{var_emailRecipients}}"
+                                
+    - debug: 
+        msg: "{{ result }}"

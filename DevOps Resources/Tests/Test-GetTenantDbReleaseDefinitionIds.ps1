@@ -1,0 +1,10 @@
+Push-Location "C:\EYdev\devops\pipelines";
+#Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWQGTP007AKV01 -StageName 'QAT-EUW' -WhatIf;
+Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWQGTP007AKV01 -StageName 'QAT-EUW';
+#Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWUGTP014AKV01 -StageName 'UAT-EUW' -WhatIf;
+#Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWUGTP014AKV01 -StageName 'UAT-EUW';
+#Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWXGTP020AKV01 -StageName 'STG-EUW' -WhatIf;
+#Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWXGTP020AKV01 -StageName 'STG-EUW';
+#Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWPGTP018AKV04 -StageName 'PRD-EUW' -WhatIf;
+#Get-TenantDbReleaseDefinitionIds -KeyVaultName EUWPGTP018AKV04 -StageName 'PRD-EUW';
+Pop-Location;

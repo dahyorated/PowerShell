@@ -1,0 +1,26 @@
+{
+	"name": "VariablesRelease",
+	"version": 1,
+	"releaseVariables": [
+		{
+			"name": "system.debug",
+			"value": "false",
+			"override": true
+		},
+		{
+			"name": "dbName",
+			"value": "TBD",
+			"override": false
+		},
+		{
+			"name": "dbNugetPackage",
+			"value": "TBD",
+			"override": false
+		},
+		{
+			"name": "dbMigrationScript",
+			"value": "TBD",
+			"override": false
+		}
+	]
+}

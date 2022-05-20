@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "serviceName": "Payment Service",
+    "environment": "QA",
+    "location": "westeurope",
+    "deploymentId": "GTP007",
+    "skuCode": "P1V2"
+  },
+  "results": {
+    "appSvcPlan": "EUWQGTP007ASP0V",
+    "appSvc": "EUWQGTP007WAP1L",
+    "resourceGroup": "GT-WEU-GTP-CORE-QA-RSG",
+    "appInsights": "EUWQGTP007AFA06",
+    "appSvcPlanJob": null,
+    "appSvcJob": null
+  }
+}

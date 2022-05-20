@@ -1,0 +1,17 @@
+{
+    "component":"create-ResourceGroup",
+  "extra_vars": {
+    "AZURE_RM_CLIENTID": "1234",
+    "AZURE_RM_SECRET": "1234",
+    "var_azureRmSubId": "14f4abcc-06c6-419a-92d7-5130f69242db",
+    "var_azure_rm_subid": "14f4abcc-06c6-419a-92d7-5130f69242db",
+    "subscription_id": "14f4abcc-06c6-419a-92d7-5130f69242db",
+    "var_resourceGroupName": "GT-WEU-GTP-TENANT-PROD-RSG-01A",
+    "var_tenantResourceGroupName": "GT-WEU-GTP-TENANT-PROD-RSG-01A",
+    "var_skipEndpointConfig": false,
+    "var_deploy_to": "TENANT",
+    "var_environment": "Production",
+    "var_location": "westeurope",
+    "var_deploymentId": "GTPCLT"
+  }
+}

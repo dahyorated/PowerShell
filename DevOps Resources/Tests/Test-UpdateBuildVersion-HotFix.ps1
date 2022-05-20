@@ -1,0 +1,10 @@
+Push-Location "C:\EYdev\devops\scripts";
+$env:BUILD_SOURCEBRANCH = "refs/heads/Release/PI9.2";
+$env:BUILD_SOURCEBRANCHNAME = 'PI9.2';
+$env:BUILD_DEFINITIONNAME = 'Test CI';
+$env:SYSTEM_TEAMPROJECT = 'Global Tax Platform';
+$env:SYSTEM_TEAMFOUNDATIONSERVERURI = 'https://eyglobaltaxplatform.visualstudio.com';
+$env:MajorMinorVersionDevelop = '9.4.0';
+$env:MajorMinorVersionOther = '{"name":"MajorMinorVersionOther","version":1,"releases":[{"branch":"9.3","hotfixVersion":0,"buildNumber":0},{"branch":"9.2","hotfixVersion":1,"buildNumber":0},{"branch":"8.4","hotfixVersion":5,"buildNumber":0}]}';
+Update-BuildVersion;
+Pop-Location;

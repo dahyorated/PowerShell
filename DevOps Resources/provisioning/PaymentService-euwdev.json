@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "serviceName": "Payment Service",
+    "environment": "Development",
+    "location": "westeurope",
+    "deploymentId": "GTP005",
+    "skuCode": "P1V2"
+  },
+  "results": {
+    "appSvcPlan": "EUWDGTP005ASP2G",
+    "appSvc": "EUWDGTP005WAP1X",
+    "resourceGroup": "GT-WEU-GTP-CORE-DEV-RSG",
+    "appInsights": "EUWDGTP001AIN01",
+    "appSvcPlanJob": null,
+    "appSvcJob": null
+  }
+}

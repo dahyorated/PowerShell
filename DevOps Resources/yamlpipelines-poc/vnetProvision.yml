@@ -1,0 +1,103 @@
+variables:
+  # define the variables used for the pipeline
+  # do not store secrets in this
+  location: "westeurope"
+  environment: "Development"
+  ctpService: "Co-Dev"
+  owner: "Dante.DeWitt@ey.com; john.vande.woude@ey.com"
+  deploymentId: "GTPWRK"
+  chargeCode: "39721502"
+  resourceGroup: "GT-WEU-GTP-CORE-SHARED-RSG"
+
+  clientid: "00efbc8e-98b3-499d-9cc1-8814e6abb0c2"
+  var_omsWorkspaceName: "GTPOMSWRKSP"
+  omsMyWorkSpaceId: "33cfa4d8-86c2-455f-a584-abdc29973748"
+  subscription: "0e24abb5-5296-4edf-a4ba-d95f6fdc39d1"
+  SKU: "P1V2"
+  rolePurpose: "POC API App"
+  framework: "v4.0"
+  az_rm_tenantid: "5b973f99-77df-4beb-b27d-aa0c70b8482c"
+  _omsWorkspaceName: "GTPOMSWRKSP"
+  _webAppName: 'pocwebapi03'
+  _AppServicePlan: ""
+  spn_key: $(clientid)
+  spn_secret: $(clientSecret)
+# Subscription for EY-CTSBP-NON-PROD-TAX-GTP TENANT-01-39721502
+# 0e24abb5-5296-4edf-a4ba-d95f6fdc39d1
+#
+# Subscription:EY-CTSBP-NON-PROD-TAX-GTP_POC-01-39721502
+# 3efbb09c-de65-4ed0-b6e3-4fc77081ccb3
+# comment
+#{
+#  "extra_vars": {
+#    "var_deploymentId": "GTPSFW",   
+#    "var_location": "westus2",	
+#    "var_environment": "Development", 
+#    "var_owner": "Dante.DeWitt@ey.com; john.vande.woude@ey.com",
+#    "var_chargeCode": "39721502",
+#    "var_requiredIps": 10,
+#    "var_resourceGroupName": "GT-WEU-GTP-CORE-SHARED-RSG"
+#  }
+#}
+
+#CreateAppSvsPlan: "UW2DGTP123ASP02"
+resources:
+  pipelines:
+    - pipeline: Userservice
+      source: User Service - CI
+
+trigger: none
+stages:
+  - stage: Deploy_Development
+    variables: { sampletxt: "sample" }
+    jobs:
+      - job: Deploy
+        #
+        pool:
+          name: "Hosted VS2017"
+        steps:
+          - script: |
+              echo Deploying the code!
+              echo Retrieve the artifacts
+              echo Create Resource group
+              echo create Application service
+              echo create application service plan
+              echo copy application Service 
+
+            # Download an artifact named 'WebApp' from a specific build run to 'bin' in $(Build.SourcesDirectory)
+          - task: DownloadBuildArtifacts@0
+            displayName: "Download artifact"
+            inputs:
+              buildType: "specific"
+              project: "c739e34c-9543-4c2c-afaf-889e9c9ac7fb"
+              pipeline: "48"
+              specificBuildWithTriggering: true
+              buildVersionToDownload: "latest"
+              downloadType: "single"
+              downloadPath: "$(System.ArtifactsDirectory)"
+              artifactName: "drop"
+
+          - script: |
+              echo  Artifacts directory
+              echo  $(System.ArtifactsDirectory)
+              dir   $(System.ArtifactsDirectory) /s
+              echo  Working directory
+              dir   $(System.DefaultWorkingDirectory) /s
+
+          # Building blocks Create resource group
+          - task: BB-deploy@0
+            displayName: "Create resource group"
+            inputs:
+              ansibleTowerConn: "GTP Ansible"
+              ansibleTowerTemplate: "prod-bb-Create_subnet-V1.3.0 "
+              additionalVars: |
+                {
+                            "var_location": "$(location)",
+                            "var_environment": "$(environment)",
+                            "var_ctpService": "$(ctpService)",
+                            "var_owner": "$(owner)",
+                            "var_deploymentId": "$(deploymentId)",
+                            "var_chargeCode": "$(chargeCode)",
+                            "var_resourceGroupName": "$(resourceGroup)",
+                            "var_productApp": "GTP"
+                          }

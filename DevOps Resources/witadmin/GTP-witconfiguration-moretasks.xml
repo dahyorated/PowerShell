@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectProcessConfiguration>
+  <BugWorkItems category="Microsoft.BugCategory" pluralName="Bugs" singularName="Bug">
+    <States>
+      <State type="Proposed" value="New" />
+      <State type="InProgress" value="Active" />
+      <State type="Complete" value="Closed" />
+      <State type="Resolved" value="Resolved" />
+    </States>
+  </BugWorkItems>
+  <FeedbackRequestWorkItems category="Microsoft.FeedbackRequestCategory" pluralName="Feedback Requests" singularName="Feedback Request">
+    <States>
+      <State type="InProgress" value="Active" />
+      <State type="Complete" value="Closed" />
+    </States>
+  </FeedbackRequestWorkItems>
+  <FeedbackResponseWorkItems category="Microsoft.FeedbackResponseCategory" pluralName="Feedback Responses" singularName="Feedback Response">
+    <States>
+      <State type="InProgress" value="Active" />
+      <State type="Complete" value="Closed" />
+    </States>
+  </FeedbackResponseWorkItems>
+  <PortfolioBacklogs>
+    <PortfolioBacklog category="Microsoft.EpicCategory" pluralName="Epics" singularName="Epic" workItemCountLimit="1000">
+      <AddPanel>
+        <Fields>
+          <Field refname="System.Title" />
+        </Fields>
+      </AddPanel>
+      <Columns>
+        <Column width="100" refname="System.WorkItemType" />
+        <Column width="400" refname="System.Title" />
+        <Column width="100" refname="System.State" />
+        <Column width="50" refname="Microsoft.VSTS.Scheduling.Effort" />
+        <Column width="50" refname="Microsoft.VSTS.Common.BusinessValue" />
+        <Column width="100" refname="Microsoft.VSTS.Common.ValueArea" />
+        <Column width="200" refname="System.Tags" />
+      </Columns>
+      <States>
+        <State type="Proposed" value="New" />
+        <State type="InProgress" value="Active" />
+        <State type="InProgress" value="Resolved" />
+        <State type="Complete" value="Closed" />
+      </States>
+    </PortfolioBacklog>
+    <PortfolioBacklog category="Microsoft.FeatureCategory" parent="Microsoft.EpicCategory" pluralName="Features" singularName="Feature" workItemCountLimit="1500">
+      <AddPanel>
+        <Fields>
+          <Field refname="System.Title" />
+        </Fields>
+      </AddPanel>
+      <Columns>
+        <Column width="100" refname="System.WorkItemType" />
+        <Column width="400" refname="System.Title" />
+        <Column width="100" refname="System.State" />
+        <Column width="50" refname="Microsoft.VSTS.Scheduling.Effort" />
+        <Column width="50" refname="Microsoft.VSTS.Common.BusinessValue" />
+        <Column width="100" refname="Microsoft.VSTS.Common.ValueArea" />
+        <Column width="200" refname="System.Tags" />
+      </Columns>
+      <States>
+        <State type="Proposed" value="New" />
+        <State type="InProgress" value="Active" />
+        <State type="InProgress" value="Resolved" />
+        <State type="Complete" value="Closed" />
+        <State type="Proposed" value="Analyzing" />
+        <State type="Proposed" value="Approved" />
+      </States>
+    </PortfolioBacklog>
+  </PortfolioBacklogs>
+  <RequirementBacklog category="Microsoft.RequirementCategory" parent="Microsoft.FeatureCategory" pluralName="Stories" singularName="User Story" workItemCountLimit="1000">
+    <AddPanel>
+      <Fields>
+        <Field refname="System.Title" />
+      </Fields>
+    </AddPanel>
+    <Columns>
+      <Column width="100" refname="System.WorkItemType" />
+      <Column width="400" refname="System.Title" />
+      <Column width="100" refname="System.State" />
+      <Column width="50" refname="Microsoft.VSTS.Scheduling.StoryPoints" />
+      <Column width="100" refname="Microsoft.VSTS.Common.ValueArea" />
+      <Column width="200" refname="System.IterationPath" />
+      <Column width="200" refname="System.Tags" />
+    </Columns>
+    <States>
+      <State type="Proposed" value="New" />
+      <State type="InProgress" value="Active" />
+      <State type="InProgress" value="Resolved" />
+      <State type="Complete" value="Closed" />
+    </States>
+  </RequirementBacklog>
+  <TaskBacklog category="Microsoft.TaskCategory" parent="Microsoft.RequirementCategory" pluralName="Tasks" singularName="Task" workItemCountLimit="1000">
+    <AddPanel>
+      <Fields>
+        <Field refname="System.Title" />
+      </Fields>
+    </AddPanel>
+    <Columns>
+      <Column width="400" refname="System.Title" />
+      <Column width="100" refname="System.State" />
+      <Column width="100" refname="System.AssignedTo" />
+      <Column width="50" refname="Microsoft.VSTS.Scheduling.RemainingWork" />
+    </Columns>
+    <States>
+      <State type="Proposed" value="New" />
+      <State type="InProgress" value="Active" />
+      <State type="Complete" value="Closed" />
+      <State type="Resolved" value="Resolved" />
+    </States>
+  </TaskBacklog>
+  <TypeFields>
+    <TypeField refname="Microsoft.VSTS.Common.Activity" type="Activity" />
+    <TypeField refname="Microsoft.VSTS.Common.StackRank" type="Order" />
+    <TypeField refname="Microsoft.VSTS.Feedback.ApplicationLaunchInstructions" type="ApplicationLaunchInstructions" />
+    <TypeField refname="Microsoft.VSTS.Feedback.ApplicationStartInformation" type="ApplicationStartInformation" />
+    <TypeField refname="Microsoft.VSTS.Feedback.ApplicationType" type="ApplicationType">
+      <TypeFieldValues>
+        <TypeFieldValue type="ClientApp" value="Client application" />
+        <TypeFieldValue type="RemoteMachine" value="Remote machine" />
+        <TypeFieldValue type="WebApp" value="Web application" />
+      </TypeFieldValues>
+    </TypeField>
+    <TypeField format="{0} h" refname="Microsoft.VSTS.Scheduling.RemainingWork" type="RemainingWork" />
+    <TypeField refname="Microsoft.VSTS.Scheduling.StoryPoints" type="Effort" />
+    <TypeField refname="System.AreaPath" type="Team" />
+  </TypeFields>
+  <Weekends>
+    <DayOfWeek>Sunday</DayOfWeek>
+    <DayOfWeek>Saturday</DayOfWeek>
+  </Weekends>
+  <Properties>
+    <Property name="HiddenBacklogs" value="Microsoft.EpicCategory" />
+    <Property name="WorkItemTypeIcons" value="Bug=icon_insect,Code Review Request=icon_code_review,Code Review Response=icon_code_response,Epic=icon_crown,Feature=icon_trophy,Feedback Request=icon_review,Feedback Response=icon_response,Issue=icon_traffic_cone,Shared Parameter=icon_test_parameter,Shared Steps=icon_test_step,Task=icon_clipboard,Test Case=icon_test_case,Test Plan=icon_test_plan,Test Suite=icon_test_suite,User Story=icon_book" />
+    <Property name="BugsBehavior" value="AsTasks" />
+  </Properties>
+  <WorkItemColors>
+    <WorkItemColor primary="FFCC293D" secondary="FFFAEAE5" name="Bug" />
+    <WorkItemColor primary="FFB4009E" secondary="FFFCEECF" name="Code Review Request" />
+    <WorkItemColor primary="FFB4009E" secondary="FFFCEECF" name="Code Review Response" />
+    <WorkItemColor primary="FFFF7B00" secondary="FFFFD7B5" name="Epic" />
+    <WorkItemColor primary="FF773B93" secondary="FFEEE2F2" name="Feature" />
+    <WorkItemColor primary="FF004B50" secondary="FFFCEECF" name="Feedback Request" />
+    <WorkItemColor primary="FF004B50" secondary="FFFCEECF" name="Feedback Response" />
+    <WorkItemColor primary="FFB4009E" secondary="FFFCEECF" name="Issue" />
+    <WorkItemColor primary="FF004B50" secondary="FFFCEECF" name="Shared Parameter" />
+    <WorkItemColor primary="FF004B50" secondary="FFFCEECF" name="Shared Steps" />
+    <WorkItemColor primary="FFF2CB1D" secondary="FFF6F5D2" name="Task" />
+    <WorkItemColor primary="FF004B50" secondary="FFFCEECF" name="Test Case" />
+    <WorkItemColor primary="FF004B50" secondary="FFFCEECF" name="Test Plan" />
+    <WorkItemColor primary="FF004B50" secondary="FFFCEECF" name="Test Suite" />
+    <WorkItemColor primary="FF009CCC" secondary="FFD6ECF2" name="User Story" />
+  </WorkItemColors>
+</ProjectProcessConfiguration>

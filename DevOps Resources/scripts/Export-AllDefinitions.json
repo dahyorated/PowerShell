@@ -1,0 +1,96 @@
+{
+  "repositoryRootFolder": "..\\pipelines",
+  "currentReleaseDefinition": "\\CTP\\Release 10.5",
+  "sources": [
+    {
+      "sourceType": "VariableGroup",
+      "sourcePath": null,
+      "isActive": true,
+      "isReleasePipeline": false
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP",
+      "isActive": true,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Obsolete-Deployed",
+      "isActive": false,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Through Dev-QA",
+      "isActive": true,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Through UAT-Perf",
+      "isActive": true,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Provisioning Only",
+      "isActive": true,
+      "isReleasePipeline": false
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 7.2",
+      "isActive": false,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 7.5",
+      "isActive": false,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 8.2",
+      "isActive": false,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 8.4",
+      "isActive": false,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 9.2",
+      "isActive": false,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 9.5",
+      "isActive": true,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 10.3",
+      "isActive": true,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "ReleaseDefinition",
+      "sourcePath": "\\CTP\\Release 10.5",
+      "isActive": true,
+      "isReleasePipeline": true
+    },
+    {
+      "sourceType": "BuildDefinition",
+      "sourcePaths": "\\|\\APIM|\\DevOps|\\Train2|\\Veracode|\\WhitesourceNew",
+      "isActive": true,
+      "isReleasePipeline": false
+    }
+  ]
+}

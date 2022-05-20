@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+	<metadata>
+		<id>DevOps-PowerShell</id>
+		<version>1.1.0</version>
+		<authors>Brad Friedlander</authors>
+		<owners>Team DevOps</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Package contains PowerShell scripts and modules used to support DevOps builds and deployments.</description>
+		<releaseNotes>Updated version of NuGet package to eliminate case-sensitivity.</releaseNotes>
+		<copyright>Copyright 2020. All rights reserved.</copyright>
+		<tags>Tag1 Tag2</tags>
+	</metadata>
+	<files>
+		<file src=".\*.*" target="" />
+		<file src=".\DevOps\*.*" target="DevOps" />
+	</files>
+</package>

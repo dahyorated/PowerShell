@@ -1,0 +1,20 @@
+{
+  "parameters": {
+    "serviceName": "Best Practices Demo",
+    "environment": "DEMO",
+    "location": "westeurope",
+    "deploymentId": "GTP035",
+    "skuCode": "P1V2",
+    "resourceGroup": "gt-weu-gtp-core-demo-rsg"
+  },
+  "results": {
+    "appInsights": "EUWEGTP035AAI01",
+    "appSvcPlanJob": 513642,
+    "appSvc": [
+      "EUWEGTP035WAP18"
+    ],
+    "appSvcJob": 513647,
+    "appSvcPlan": "EUWEGTP035ASP16",
+    "resourceGroup": "gt-weu-gtp-core-demo-rsg"
+  }
+}

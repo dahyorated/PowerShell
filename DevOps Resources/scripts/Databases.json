@@ -1,0 +1,342 @@
+[
+  {
+    "Database": "userservicedb",
+    "Username": "userservicedbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "clientdb",
+    "Username": "clientdbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "alertservicedb",
+    "Username": "alertservicedbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "apaccitadjdb",
+    "Username": "apaccitadjdbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "gatherschedulerdb",
+    "Username": "gatherschedulerdbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "loggingdb",
+    "Username": "loggingdbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "mdedb",
+    "Username": "mdedbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "reportcatalogdb",
+    "Username": "reportcatalogdbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "servicecatalogdb",
+    "Username": "servicecatalogdbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  },
+  {
+    "Database": "transformationdb",
+    "Username": "transformationdbuser",
+    "Stages": [
+      {
+        "StageName": "DEV-EUW",
+        "ServerUrl": "euwdgtp005sql01.database.windows.net"
+      },
+      {
+        "StageName": "QAT-EUW",
+        "ServerUrl": "euwqgtp007sql01.database.windows.net"
+      },
+      {
+        "StageName": "UAT-EUW",
+        "ServerUrl": "euwugtp014sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRF-EUW",
+        "ServerUrl": "euwfgtp012sql01.database.windows.net"
+      },
+      {
+        "StageName": "DMO-EUW",
+        "ServerUrl": "euwegtp035sql02.database.windows.net"
+      },
+      {
+        "StageName": "STG-EUW",
+        "ServerUrl": "euwxgtp020sql01.database.windows.net"
+      },
+      {
+        "StageName": "PRD-EUW",
+        "ServerUrl": "euwpgtp018sql01.database.windows.net"
+      }
+    ]
+  }
+]

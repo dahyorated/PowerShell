@@ -1,0 +1,65 @@
+variables:
+
+  location: 'westeurope'
+  environment: 'Development'
+  ctpService: 'Co-Dev'
+  owner: 'Dante.DeWitt@ey.com; john.vande.woude@ey.com'
+  deploymentId: 'GTPWRK'
+  chargeCode: '39721502'
+  resourceGroup: 'GT-WEU-GTP-CORE-POC-RSG'
+  clientid: '00efbc8e-98b3-499d-9cc1-8814e6abb0c2'
+  var_omsWorkspaceName: 'GTPOMSWRKSP'
+  omsMyWorkSpaceId: '33cfa4d8-86c2-455f-a584-abdc29973748'
+  subscription: '3efbb09c-de65-4ed0-b6e3-4fc77081ccb3'
+  
+stages:
+- stage: Deploy
+  variables: { 
+    sampletxt: 'sample' } 
+  jobs:
+  - job: Deploy
+    pool:
+      name: 'Hosted VS2017'
+    steps:
+    - script: echo Deploying the code!
+      # Download an artifact named 'WebApp' from a specific build run to 'bin' in $(Build.SourcesDirectory)
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'specific'
+        project: 'c739e34c-9543-4c2c-afaf-889e9c9ac7fb'
+        pipeline: '48'
+        specificBuildWithTriggering: true
+        buildVersionToDownload: 'latest'
+        downloadType: 'single'
+        downloadPath: '$(System.ArtifactsDirectory)'
+        artifactName: 'drop'
+
+    - script: |
+       echo  '$(System.ArtifactsDirectory)'
+       Tree  '$(System.ArtifactsDirectory)'
+
+    - task: BB-deploy@0
+      inputs:
+        ansibleTowerConn: 'GTP Ansible'
+        ansibleTowerTemplate: 'prod-bb-create-resource-group-V1.1.6 '
+        additionalVars: |
+          {
+                      "var_location": "$(location)",
+                      "var_environment": "$(environment)",
+                      "var_ctpService": "$(ctpService)",
+                      "var_owner": "$(owner)",
+                      "var_deploymentId": "$(deploymentId)",
+                      "var_chargeCode": "$(chargeCode)",
+                      "var_resourceGroupName": "$(resourceGroup)",
+                      "var_productApp": "GTP"
+                    }
+
+
+- stage: Test
+  jobs:
+  - job: TestOnWindows
+    steps:
+    - script: echo Testing on Windows!
+  - job: TestOnLinux
+    steps:
+    - script: echo Testing on Linux!

@@ -1,0 +1,51 @@
+{
+	"name": "MajorMinorVersionOther",
+	"version": 1,
+	"releases": [
+		{
+			"branch": "10.5",
+			"hotfixVersion": 0,
+			"buildNumber": 0
+		},
+		{
+			"branch": "10.4",
+			"hotfixVersion": 0,
+			"buildNumber": 0
+		},
+		{
+			"branch": "10.3PRF",
+			"hotfixVersion": 0,
+			"buildNumber": 0
+		},
+		{
+			"branch": "10.3",
+			"hotfixVersion": 0,
+			"buildNumber": 0
+		},
+		{
+			"branch": "10.2",
+			"hotfixVersion": 0,
+			"buildNumber": 0
+		},
+		{
+			"branch": "10.1",
+			"hotfixVersion": 0,
+			"buildNumber": 0
+		},
+		{
+			"branch": "9.5",
+			"hotfixVersion": 12,
+			"buildNumber": 0
+		},
+		{
+			"branch": "9.2",
+			"hotfixVersion": 1,
+			"buildNumber": 0
+		},
+		{
+			"branch": "8.4",
+			"hotfixVersion": 5,
+			"buildNumber": 0
+		}
+	]
+}

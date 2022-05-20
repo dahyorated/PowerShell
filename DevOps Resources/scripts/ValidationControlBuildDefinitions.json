@@ -1,0 +1,54 @@
+{
+	"name": "ValidationControlBuildPipelines",
+	"version": 1,
+	"globalValidations": {
+		"buildVariables": [
+			{
+				"name": "maxVariance",
+				"bldType": "SVC",
+				"isVarGroup": false,
+				"value": 1,
+				"allowOverride": true,
+				"isRequired": true,
+				"checkUsage": true
+			},
+			{
+				"name": "sdkVersion",
+				"bldType": "SVC",
+				"isVarGroup": false,
+				"value": null,
+				"valuePattern": "(2|3)\\.[0-9]\\.[0-9]{1,}",
+				"allowOverride": true,
+				"isRequired": false,
+				"checkUsage": true
+			},
+			{
+				"name": "system.debug",
+				"bldType": "ALL",
+				"isVarGroup": false,
+				"value": "false",
+				"allowOverride": true,
+				"isRequired": true,
+				"checkUsage": false
+			},
+			{
+				"name": "varianceThreshold",
+				"bldType": "SVC",
+				"isVarGroup": false,
+				"value": 80,
+				"allowOverride": false,
+				"isRequired": true,
+				"checkUsage": true
+			},
+			{
+				"name": "MajorMinorVersion",
+				"bldType": "ALL",
+				"isVarGroup": true,
+				"value": null,
+				"allowOverride": false,
+				"isRequired": true,
+				"checkUsage": false
+			}
+		]
+	}
+}

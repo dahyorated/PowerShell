@@ -1,0 +1,15 @@
+{
+  "component": "destroy-ResourceGroup",
+  "extra_vars": {
+      "AZURE_RM_CLIENTID": "xxxx",
+      "AZURE_RM_SECRET": "xxxx",
+      "subscription_id": "dad52835-ad72-4a71-bb30-5b0f38ec9855",
+      "var_azureRmSubId": "dad52835-ad72-4a71-bb30-5b0f38ec9855",
+      "var_azure_rm_subid": "dad52835-ad72-4a71-bb30-5b0f38ec9855",
+      "var_resourceGroupName": "GT-WEU-GTP-TENANT-PRODTest01-RSG",
+      "var_tenantResourceGroupName": "GT-WEU-GTP-TENANT-PRODTest01-RSG",
+      "var_deploy_to": "TEST",
+      "var_environment": "Production",
+      "var_location": "westus"
+   }
+}

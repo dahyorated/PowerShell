@@ -1,0 +1,1 @@
+witadmin importprocessconfig /collection:https://eyglobaltaxplatform.visualstudio.com /p:"Global Tax Platform" /f:GTP-witconfiguration-moretasks.xml

@@ -1,0 +1,9 @@
+{
+  "parameters": {
+    "serviceName": "<<Service Name>>",
+    "environment": "<<Environment>>",
+    "location": "<<Location>>",
+    "deploymentId": "<<GTPnnn>>",
+    "skuCode": "P1V2"
+  }
+}

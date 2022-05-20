@@ -1,0 +1,31 @@
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+name: DevOps - Start QA Freeze 
+
+trigger:
+- none
+
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight UTC build
+  branches:
+    include:
+    - master
+  always: true
+
+pool:
+  name: 'Azure Pipelines'
+  vmImage: 'windows-latest'
+
+steps:
+- checkout: self
+  clean: true
+  fetchDepth: 1
+  persistCredentials: true
+
+- task: PowerShell@2
+  inputs:
+    filePath: 'scripts/Start-QaFreeze.ps1'
+    arguments: '-Verbose'
+    workingDirectory: 'pipelines'

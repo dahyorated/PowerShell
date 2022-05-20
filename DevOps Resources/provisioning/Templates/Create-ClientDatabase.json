@@ -1,0 +1,8 @@
+{
+  "parameters": {
+    "serviceName": "<<Service Name>>",
+    "environment": "<<Environment>>",
+    "location": "<<Location>>",
+    "clientId": "<<ClientID>>"
+  }
+}

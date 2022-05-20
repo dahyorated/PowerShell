@@ -1,0 +1,19 @@
+{
+  "parameters": {
+    "serviceName": "Best Practices Demo",
+    "environment": "UAT",
+    "location": "westeurope",
+    "deploymentId": "GTP014",
+    "skuCode": "P1V2"
+  },
+  "results": {
+    "appInsights": "EUWUGTP014AAI01",
+    "appSvcPlanJob": 513552,
+    "appSvc": [
+      "EUWUGTP014WAP2F"
+    ],
+    "appSvcJob": 513556,
+    "appSvcPlan": "EUWUGTP014ASP1W",
+    "resourceGroup": "GT-WEU-GTP-CORE-UAT-RSG"
+  }
+}

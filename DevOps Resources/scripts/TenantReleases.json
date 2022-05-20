@@ -1,0 +1,72 @@
+[
+	{
+		"pipeline": "apaccit-BoardwalkService-ctp",
+		"type": "SVC",
+		"tenantServiceName": "bwapods"
+	},
+	{
+		"pipeline": "20 - ingestioneygtpods-db-ctp",
+		"tenantServiceName": "dataservice",
+		"type": "DB"
+	},
+	{
+		"pipeline": "21 - entityservice-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "entityservice"
+	},
+	{
+		"pipeline": "apaccit-boardwalk-db-ctp",
+		"tenantServiceName": "bwapods",
+		"type": "DB"
+	},
+	{
+		"pipeline": "apaccit-clientconfig-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "apacclientconfig"
+	},
+	{
+		"pipeline": "boardwalk-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "boardwalk"
+	},
+	{
+		"pipeline": "document-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "documentservice"
+	},
+	{
+		"pipeline": "fileingestion-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "ingestionservice"
+	},
+	{
+		"pipeline": "gtp-BoardwalkService-ctp",
+		"type": "SVC",
+		"tenantServiceName": "boardwalk"
+	},
+	{
+		"pipeline": "gtp-datawarehouse-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "datawarehouse"
+	},
+	{
+		"pipeline": "inforequest-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "inforequest"
+	},
+	{
+		"pipeline": "notifications-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "notification"
+	},
+	{
+		"pipeline": "reporting-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "reportingservice"
+	},
+	{
+		"pipeline": "taxfactei-db-ctp",
+		"type": "DB",
+		"tenantServiceName": "taxfactimportexport"
+	}
+]

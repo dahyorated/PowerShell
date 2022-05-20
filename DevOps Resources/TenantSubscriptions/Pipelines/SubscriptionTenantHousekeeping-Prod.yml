@@ -1,0 +1,60 @@
+variables:
+  # define the variables use for the pipeline
+  # do not store secrets in this
+  location: "westeurope"
+  locationDR: "eastus"
+  environment: "Production"
+  ctpService: "IS"
+  owner: "Dante.DeWitt@ey.com; john.vande.woude@ey.com"
+  deploymentId: "GTPCLT"
+  chargeCode: "39721502"
+  resourceGroup: "GT-WEU-GTP-TENANT-PROD-RSG_test1"
+  resourceGroupDR: "GT-EUS-GTP-TENANT-PROD-RSG"
+  rolePurpose: "TenantRSG"
+  # this subscription ID is for EY-CTSBP-NON-PROD-TAX-GTP_DEVOPS_TST-01-M-39861197
+  subscriptionid: "dad52835-ad72-4a71-bb30-5b0f38ec9855"
+  
+  
+  az_rm_tenantid: "5b973f99-77df-4beb-b27d-aa0c70b8482c"
+  spn_key: "f1ac6430-25ce-4fb9-b8d8-37b0b26501be"
+  spn_secret: "xxxxx"
+  #clientid: " "
+# comment
+resources:
+  pipelines:
+    - pipeline: Userservice
+      source: User Service - CI
+
+trigger: none
+stages:
+  - stage: DeploytoPOC
+    variables: { sampletxt: "sample" }
+    jobs:
+      - job: Deploy
+        pool:
+          name: "Hosted VS2017"
+        steps: 
+           - task: EY-CTP.EY-infra-utils.release-task-deploy-ansible-template.BB-deploy@2
+             displayName: "Create RSG Tenant Prod"
+             inputs:
+               azureConnection: 'CTP-Non Prod Tenant- Dev -> Perf' 
+               ansibleTowerConn: 'GTP Ansible' 
+               ansibleTowerTemplate: 396 
+               vars: |
+                    "AZURE_RM_CLIENTID": $(spn_key)
+                    "AZURE_RM_SECRET": $(spn_secret)
+                    "AZURE_RM_TENANTID": $(az_rm_tenantid)
+                    "var_azureRmSubId": $(subscriptionid)
+                    "var_azure_rm_subid": $(subscriptionid)
+                    "subscription_id": $(subscriptionid)
+                    "var_resourceGroupName": $(resourceGroup)
+                    "var_skipEndpointConfig": false
+                    "var_deploy_to": TENANT
+                    "var_environment": $(environment)
+                    "var_location": $(location)
+                    "var_owner": $(owner)
+                    "var_ctpService": $(ctpService)
+                    "var_chargeCode": $(chargeCode)
+                    "var_productApp": GTP
+                    "var_deploymentId": $(deploymentId)
+

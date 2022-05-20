@@ -1,0 +1,19 @@
+{
+  "parameters": {
+    "serviceName": "Best Practices Demo",
+    "environment": "QA",
+    "location": "westeurope",
+    "deploymentId": "GTP007",
+    "skuCode": "P1V2"
+  },
+  "results": {
+    "appInsights": "EUWQGTP007AFA06",
+    "appSvcPlanJob": 513518,
+    "appSvc": [
+      "EUWQGTP007WAP24"
+    ],
+    "appSvcJob": 513523,
+    "appSvcPlan": "EUWQGTP007ASP1Y",
+    "resourceGroup": "GT-WEU-GTP-CORE-QA-RSG"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "component": "destroy-AppServicePlan",
+  "extra_vars": {
+    "var_deploy_to": "CORE",
+    "var_environment": "Development",
+    "var_location": "westeurope",
+    "var_deploymentId": "GTP???",
+    "var_numberOfWorkers": 1,
+    "var_applicationServicePlanOS": "windows",
+    "var_appSNames": "<<Service Name>>",
+    "var_rolePurposeTags": "App Service Plan for <<Service Name>>",
+    "sku_code": "S1",
+    "var_appServicePlanName": "???"
+
+  }
+}

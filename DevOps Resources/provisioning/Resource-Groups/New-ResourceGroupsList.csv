@@ -1,0 +1,2 @@
+SubscriptionName,SubscriptionID,StageName,RSG,RSGDR,environment,location,locationDR,var_deploymentId
+EY-CTSBP-NON-PROD-TAX-GTP_DEVOPS_TST-01-M-39861197,,PRD-EUW,GT-WEU-GTP-TENANT-PRODTest01-RSG,GT-EUS-GTP-TENANT-PRODTest01-RSG,Production,westeurope,eastus,GTP018

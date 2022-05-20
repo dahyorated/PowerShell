@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "serviceName": "BoomiInt",
+    "environment": "QA",
+    "location": "westeurope",
+    "clientId": 3
+  },
+  "results": {
+    "sqlServerName": "euwqgtp001sql01",
+    "keyVaultName": "EUWQGTP007AKV01",
+    "resourceGroup": "GT-WEU-GTP-TENANT-QA-RSG",
+    "databaseName": [
+      "boomiint00003db"
+    ],
+    "databaseJobId": 441920
+  }
+}

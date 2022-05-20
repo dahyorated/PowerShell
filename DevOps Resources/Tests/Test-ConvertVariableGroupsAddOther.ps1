@@ -1,0 +1,10 @@
+Push-Location C:\EYdev\devops\OneTime;
+#.\Convert-VariableGroupsAddOther.ps1 -VariableGroups @('Versioning_Test','Versioning_Test2') -SaveUpdateJson -UseTest -NoUpdate;
+#.\Convert-VariableGroupsAddOther.ps1 -VariableGroups @('Versioning_Test') -SaveUpdateJson -UseTest -NoUpdate;
+#.\Convert-VariableGroupsAddOther.ps1 -NoUpdate;
+#.\Convert-VariableGroupsAddOther.ps1 -VariableGroups @('Versioning_Test','Versioning_Test2') -UseTest;
+#.\Convert-VariableGroupsAddOther.ps1 -VariableGroups @('Versioning_Test','Versioning_Test2');
+#.\Convert-VariableGroupsAddOther.ps1 -VariableGroups @('Versioning_Test2') -UseTest -Verbose;
+#.\Convert-VariableGroupsAddOther.ps1 -VariableGroups @('Versioning_Test2') -NoUpdate -UseTest -Verbose;
+.\Convert-VariableGroupsAddOther.ps1 -NoUpdate;
+Pop-Location;

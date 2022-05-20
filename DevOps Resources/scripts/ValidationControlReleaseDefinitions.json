@@ -1,0 +1,152 @@
+{
+	"name": "ValidationControlReleasePipelines",
+	"version": 1,
+	"globalValidations": {
+		"releaseVariables": [
+			{
+				"name": "dbName",
+				"relType": "DB"
+			},
+			{
+				"name": "system.debug",
+				"relType": "ALL",
+				"value": "false"
+			}
+		],
+		"stageVariables": [
+			{
+				"name": "appSvcName",
+				"relType": "SVC",
+				"varGroup": false,
+				"aliases": [
+					"appServiceName"
+				]
+			},
+			{
+				"name": "serviceConnection",
+				"relType": "SVC",
+				"varGroup": true,
+				"aliases": [
+					"AzureSubscription"
+				]
+			}
+		],
+		"badPrimaryArtifacts": [
+			"DevOps - CI",
+			"IAC Scripts - CI",
+			"QA Test Automation-CI"
+		]
+	},
+	"stageVariables": [
+		{
+			"stageName": "DEV-EUW",
+			"relType": "ALL",
+			"follows": null,
+			"variables": [
+			],
+			"approvers": [
+			]
+		},
+		{
+			"stageName": "DEV-USE",
+			"relType": "SVC",
+			"follows": "DEV-EUW",
+			"variables": [
+			],
+			"approvers": [
+			]
+		},
+		{
+			"stageName": "QAT-EUW",
+			"relType": "ALL",
+			"follows": "DEV-EUW",
+			"variables": [
+			],
+			"approvers": [
+			]
+		},
+		{
+			"stageName": "UAT-EUW",
+			"relType": "ALL",
+			"follows": "QAT-EUW",
+			"variables": [
+			],
+			"approvers": [
+				{
+					"name": "Release Approvers- UAT",
+					"rank": 1
+				}
+			]
+		},
+		{
+			"stageName": "PRF-EUW",
+			"relType": "ALL",
+			"follows": "UAT-EUW",
+			"variables": [
+			],
+			"approvers": [
+				{
+					"name": "Release Approvers- Performance",
+					"rank": 1
+				}
+			]
+		},
+		{
+			"stageName": "DMO-EUW",
+			"relType": "ALL",
+			"follows": "STG-EUW",
+			"variables": [
+			],
+			"approvers": [
+			]
+		},
+		{
+			"stageName": "STG-EUW",
+			"relType": "ALL",
+			"follows": "UAT-EUW",
+			"variables": [
+			],
+			"approvers": [
+				{
+					"name": "Release Approvers- UAT",
+					"rank": 1
+				}
+			]
+		},
+		{
+			"stageName": "STG-USE",
+			"relType": "SVC",
+			"follows": "STG-EUW",
+			"variables": [
+			],
+			"approvers": [
+			]
+		},
+		{
+			"stageName": "PRD-EUW",
+			"relType": "ALL",
+			"follows": "STG-EUW",
+			"variables": [
+			],
+			"approvers": [
+				{
+					"name": "Release Pre-Approvers - Production",
+					"rank": 1
+				},
+				{
+					"name": "Release Approvers- Production",
+					"rank": 2
+				}
+			]
+		},
+		{
+			"stageName": "PRD-USE",
+			"relType": "SVC",
+			"follows": "PRD-EUW",
+			"variables": [
+			],
+			"approvers": [
+			]
+		}
+	]
+}

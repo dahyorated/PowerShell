@@ -1,0 +1,17 @@
+Push-Location C:\EYdev\devops\pipelines;
+#Write-Output "Test - Folder does not exist.";
+#Validate-ReleaseDefinition -PipelineName test1-ctp -SourcePath '\CTP\POC\BMFX';
+#Write-Output "Test - Bad pipeline name and does not exist";
+#Validate-ReleaseDefinition -PipelineName test1-ctpX -SourcePath '\CTP\POC\BMF';
+Write-Output "Test - Service Pipelines";
+Validate-ReleaseDefinition -PipelineName test1-ctp -SourcePath '\CTP\POC\BMF';
+#Write-Output "Test - Database Pipelines";
+#Validate-ReleaseDefinition -PipelineName test1-db-ctp -SourcePath '\CTP\POC\BMF';
+#Write-Output "Test - Other Pipelines";
+#Validate-ReleaseDefinition -PipelineName 'clientmasterdataservice-ctp';
+#Validate-ReleaseDefinition -PipelineName '04 - eurekaservice-ctp';
+#Validate-ReleaseDefinition -PipelineName 'gtp-datawarehouse-db-ctp';
+#Validate-ReleaseDefinition -PipelineName 'gtp-BoardwalkService-ctp';
+#Validate-ReleaseDefinition -PipelineName 'emailservice-ctp';
+#Validate-ReleaseDefinition -PipelineName boomiplatformservice-ctp;
+Pop-Location;
